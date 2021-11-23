@@ -139,10 +139,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\finding-snack.cpp" />
+    <ClCompile Include="Sources\FindingSnack\FindingSnack.cpp" />
+    <ClCompile Include="Sources\FindingSnack\MainMenu\MainMenu.cpp" />
+    <ClCompile Include="Sources\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\푸앙_기본형.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\FindingSnack\FindingSnack.h" />
+    <ClInclude Include="Sources\FindingSnack\MainMenu\MainMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
