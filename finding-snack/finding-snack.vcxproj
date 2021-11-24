@@ -142,9 +142,18 @@
     <ClCompile Include="Sources\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Images\startScene.PNG" />
     <Image Include="Images\푸앙_기본형.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\FindingSnackLast\Builder.h" />
+    <ClInclude Include="Sources\FindingSnackLast\FindingSnackTest.h" />
+    <ClInclude Include="Sources\FindingSnackLast\MainMenuSceneBuilder.h" />
+    <ClInclude Include="Sources\FindingSnackTest\Builder.h" />
+    <ClInclude Include="Sources\FindingSnackTest\FindingSnack.h" />
+    <ClInclude Include="Sources\FindingSnackTest\FindingSnackTest.h" />
+    <ClInclude Include="Sources\FindingSnackTest\MainMenuSceneBuilder.h" />
+    <ClInclude Include="Sources\FindingSnackTest\SceneBuilder.h" />
     <ClInclude Include="Sources\FindingSnack\FindingSnack.h" />
     <ClInclude Include="Sources\FindingSnack\MainComponent.h" />
     <ClInclude Include="Sources\FindingSnack\Waiter.h" />
