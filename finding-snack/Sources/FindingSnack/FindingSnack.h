@@ -5,6 +5,9 @@
 #include <stdio.h> // 출력 확인 용 
 
 #include "MainMenu/MainMenu.h"
+#include "Stage/Stage.h"
+#include "SelectStage/SelectStage.h"
+
 
 using namespace bangtal;
 class FindingSnack
@@ -12,14 +15,14 @@ class FindingSnack
 
 public:
 
-	MainMenu mainMenu;
-	//SelectStage selectStage;
-	//Stage stages; // 클래스이름을 복수로할지 단수로할지.
+	MainMenu * mainMenu;
+	SelectStage * selectStage;
+	Stage * stages; 
 
 	//ScenePtr scenes[30];
 
 	// 생성자 
-	FindingSnack(MainMenu main) : mainMenu(main) {};
+	//FindingSnack(MainMenu main) : mainMenu(main) {};
 
 	
 

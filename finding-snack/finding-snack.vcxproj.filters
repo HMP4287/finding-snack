@@ -37,5 +37,11 @@
     <ClInclude Include="Sources\FindingSnack\MainMenu\MainMenu.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\FindingSnack\SelectStage\SelectStage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\FindingSnack\Stage\Stage.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

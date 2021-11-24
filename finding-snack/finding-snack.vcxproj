@@ -149,6 +149,8 @@
   <ItemGroup>
     <ClInclude Include="Sources\FindingSnack\FindingSnack.h" />
     <ClInclude Include="Sources\FindingSnack\MainMenu\MainMenu.h" />
+    <ClInclude Include="Sources\FindingSnack\SelectStage\SelectStage.h" />
+    <ClInclude Include="Sources\FindingSnack\Stage\Stage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
