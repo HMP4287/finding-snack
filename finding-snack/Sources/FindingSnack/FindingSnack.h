@@ -1,41 +1,33 @@
 #pragma once
-
-
 #include <bangtal> 
 #include <stdio.h> // 출력 확인 용 
 
-#include "MainMenu/MainMenu.h"
-#include "Stage/Stage.h"
-#include "SelectStage/SelectStage.h"
-
-
 using namespace bangtal;
+
 class FindingSnack
 {
-
 public:
+	//FindingSnack* pSelf;
+	ScenePtr mainMenu;
+	ScenePtr stageSelection;
+	ScenePtr stage;
 
-	MainMenu * mainMenu;
-	SelectStage * selectStage;
-	Stage * stages; 
+	ObjectPtr btn; 
+public:
+	FindingSnack() {
+		//pSelf = this;
 
-	//ScenePtr scenes[30];
+	}
+	virtual ~FindingSnack();
 
-	// 생성자 
-	//FindingSnack(MainMenu main) : mainMenu(main) {};
+	virtual void enter() = 0;
+	virtual void exit() = 0;
+	virtual void update() = 0;
+	virtual void draw() = 0;
+	virtual void event() = 0;
 
-	
 
-
-	// 오버라이딩할 함수들 
-	/*
-	start();
-	Enter();
-	Exit();
-	Update(int dt);
-	Draw();
-	Event(void event);
-	getScene();*/
+	virtual ScenePtr getScene() = 0;
 
 
 };

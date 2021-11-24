@@ -147,7 +147,9 @@
     <Image Include="Images\푸앙_기본형.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\FindingSnack\Builder\Builder.h" />
     <ClInclude Include="Sources\FindingSnack\FindingSnack.h" />
+    <ClInclude Include="Sources\FindingSnack\FindingSnackGame.h" />
     <ClInclude Include="Sources\FindingSnack\MainMenu\MainMenu.h" />
     <ClInclude Include="Sources\FindingSnack\SelectStage\SelectStage.h" />
     <ClInclude Include="Sources\FindingSnack\Stage\Stage.h" />

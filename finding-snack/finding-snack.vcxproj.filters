@@ -43,5 +43,11 @@
     <ClInclude Include="Sources\FindingSnack\Stage\Stage.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\FindingSnack\Builder\Builder.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\FindingSnack\FindingSnackGame.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
