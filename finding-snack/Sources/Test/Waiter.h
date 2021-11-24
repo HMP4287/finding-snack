@@ -12,7 +12,9 @@ public:
     ~Waiter() { }
 
     void SetPizzaBuilder(PizzaBuilder* b) { pizzaBuilder = b; }
+
     std::auto_ptr<Pizza> GetPizza() { return pizzaBuilder->GetPizza(); }
+
     void ConstructPizza()
     {
         pizzaBuilder->createNewPizzaProduct();

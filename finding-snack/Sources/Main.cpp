@@ -1,9 +1,9 @@
 ﻿#include <iostream>
 #include "FindingSnack/FindingSnack.h"
 
-#include "Test/Waiter.h"
-#include "Test/HawaiianPizzaBuilder.h"
-#include "Test/SpicyPizzaBuilder.h"
+#include "Test/Waiter.h" // 필수 
+#include "Test/HawaiianPizzaBuilder.h" // 필수 
+#include "Test/SpicyPizzaBuilder.h" // 필수 
 #include "Test/Pizza.h"
 #include "Test/PizzaBuilder.h"
 int main()
@@ -18,14 +18,20 @@ int main()
     Waiter waiter;
 
     HawaiianPizzaBuilder hawaiianPizzaBuilder;
+
     waiter.SetPizzaBuilder(&hawaiianPizzaBuilder);
+
     waiter.ConstructPizza();
+
     std::auto_ptr<Pizza> pizza = waiter.GetPizza();
+    
     pizza->ShowPizza();
 
     SpicyPizzaBuilder spicyPizzaBuilder;
+    
     waiter.SetPizzaBuilder(&spicyPizzaBuilder);
     waiter.ConstructPizza();
+    
     pizza = waiter.GetPizza();
     pizza->ShowPizza();
 
