@@ -1,11 +1,23 @@
 ﻿#include <iostream>
-#include "FindingSnack/FindingSnack.h"
+//#include "FindingSnack/FindingSnack.h"
 
-#include "Test/Waiter.h" // 필수 
-#include "Test/HawaiianPizzaBuilder.h" // 필수 
-#include "Test/SpicyPizzaBuilder.h" // 필수 
-#include "Test/Pizza.h"
-#include "Test/PizzaBuilder.h"
+//#include "Test/Waiter.h" // 필수 
+//#include "Test/HawaiianPizzaBuilder.h" // 필수 
+//#include "Test/SpicyPizzaBuilder.h" // 필수 
+//#include "Test/Pizza.h"
+//#include "Test/PizzaBuilder.h"
+//
+//
+//#include "FindingSnackTest/Builder.h"
+//#include "FindingSnackTest/MainMenuSceneBuilder.h"
+//#include "FindingSnackTest/FindingSnack.h"
+
+//#include "FindingSnackLast/FindingSnackTest.h"
+
+#include "FindingSnackLast/Builder.h"
+#include "FindingSnackLast/MainMenuSceneBuilder.h"
+
+
 int main()
 {
 
@@ -14,26 +26,50 @@ int main()
     // 따라서 -> 상속을 포기하고, 기존 목적인 객체지향적 설계에서 가독성을 위한 설계로 변경 
     // MainMenu 클래스와 findingSnack클래스에서 서로에게 접근할 수 있어야 하기 때문에 아래와 같이 설계. 
     // 더 나은 방안이 있을 수 있음 
+    //FindingSnack findingSnackGame; 
+
+    //Builder builder; 
+    //MainMenuSceneBuilder mainMenuSceneBuilder;
+    //builder.SetSceneBuilder(&mainMenuSceneBuilder);
+    //builder.constructScene();
+    ////ScenePtr main = builder.getScene();
+    //findingSnackGame.setMainMenuScene(builder.getScene());
+    //findingSnackGame.start();
+    FindingSnack root;
+
+    MainMenuSceneBuilder mainMenuSceneBuilder(&root); // 생성자에서 construct 실행 ?
+    // Select. .  .. 같은것도 다 마찬가지. 
+
+    root.start();
     
-    Waiter waiter;
 
-    HawaiianPizzaBuilder hawaiianPizzaBuilder;
 
-    waiter.SetPizzaBuilder(&hawaiianPizzaBuilder);
+    //Builder builder; //root 만 박혀있는 상태 
+    //builder.setBuilder(&root);
 
-    waiter.ConstructPizza();
 
-    std::auto_ptr<Pizza> pizza = waiter.GetPizza();
-    
-    pizza->ShowPizza();
+    //MainMenuSceneBuilder mainMenuSceneBuilder(&root);
+    //builder.construct();
 
-    SpicyPizzaBuilder spicyPizzaBuilder;
-    
-    waiter.SetPizzaBuilder(&spicyPizzaBuilder);
-    waiter.ConstructPizza();
-    
-    pizza = waiter.GetPizza();
-    pizza->ShowPizza();
+    // 빌더 생성시 findingSnack의 생성자를 한번 호출함 
+    //builder.setBuilder();
+
+
+
+
+
+    //Waiter waiter;
+    //HawaiianPizzaBuilder hawaiianPizzaBuilder;
+    //waiter.SetPizzaBuilder(&hawaiianPizzaBuilder);
+    //waiter.ConstructPizza();
+
+    //std::auto_ptr<Pizza> pizza = waiter.GetPizza();
+    //pizza->ShowPizza();
+    //SpicyPizzaBuilder spicyPizzaBuilder;
+    //waiter.SetPizzaBuilder(&spicyPizzaBuilder);
+    //waiter.ConstructPizza();
+    //pizza = waiter.GetPizza();
+    //pizza->ShowPizza();
 
 
 
