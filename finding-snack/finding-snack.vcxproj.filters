@@ -18,12 +18,6 @@
     <ClCompile Include="Sources\Main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\FindingSnack\FindingSnack.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Sources\FindingSnack\MainMenu\MainMenu.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\푸앙_기본형.png">
@@ -34,13 +28,25 @@
     <ClInclude Include="Sources\FindingSnack\FindingSnack.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\FindingSnack\MainMenu\MainMenu.h">
+    <ClInclude Include="Sources\FindingSnack\MainComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\FindingSnack\SelectStage\SelectStage.h">
+    <ClInclude Include="Sources\FindingSnack\Waiter.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\FindingSnack\Stage\Stage.h">
+    <ClInclude Include="Sources\Test\Pizza.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Test\PizzaBuilder.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Test\HawaiianPizzaBuilder.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Test\SpicyPizzaBuilder.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Test\Waiter.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

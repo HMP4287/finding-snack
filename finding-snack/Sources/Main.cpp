@@ -1,7 +1,11 @@
 ﻿#include <iostream>
 #include "FindingSnack/FindingSnack.h"
 
-
+#include "Test/Waiter.h" // 필수 
+#include "Test/HawaiianPizzaBuilder.h" // 필수 
+#include "Test/SpicyPizzaBuilder.h" // 필수 
+#include "Test/Pizza.h"
+#include "Test/PizzaBuilder.h"
 int main()
 {
 
@@ -10,16 +14,29 @@ int main()
     // 따라서 -> 상속을 포기하고, 기존 목적인 객체지향적 설계에서 가독성을 위한 설계로 변경 
     // MainMenu 클래스와 findingSnack클래스에서 서로에게 접근할 수 있어야 하기 때문에 아래와 같이 설계. 
     // 더 나은 방안이 있을 수 있음 
+    
+    Waiter waiter;
 
-    FindingSnack findingSnackGame;
-    MainMenu a = new MainMenu(&findingSnackGame);
-    //다른클래스들도 생성 후 마지막에 setData(a, b, c, d해서 findingSnakeGame에 넣어주기)
-   
-    // 클래스 필드에 값 주입하는 과정 생성자로도 가능, Setter로 넣어야 될듯 함  
-    //findingSnackGame.setMainMenu(MainMenu main);
-    //findingSnackGame.setMainMenu(MainMenu main);
-    //findingSnackGame.setMainMenu(MainMenu main);
-    //findingSnackGame.start();
+    HawaiianPizzaBuilder hawaiianPizzaBuilder;
+
+    waiter.SetPizzaBuilder(&hawaiianPizzaBuilder);
+
+    waiter.ConstructPizza();
+
+    std::auto_ptr<Pizza> pizza = waiter.GetPizza();
+    
+    pizza->ShowPizza();
+
+    SpicyPizzaBuilder spicyPizzaBuilder;
+    
+    waiter.SetPizzaBuilder(&spicyPizzaBuilder);
+    waiter.ConstructPizza();
+    
+    pizza = waiter.GetPizza();
+    pizza->ShowPizza();
+
+
+
 
     return 0; 
 }

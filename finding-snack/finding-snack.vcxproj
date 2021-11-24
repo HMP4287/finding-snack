@@ -139,8 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\FindingSnack\FindingSnack.cpp" />
-    <ClCompile Include="Sources\FindingSnack\MainMenu\MainMenu.cpp" />
     <ClCompile Include="Sources\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -148,9 +146,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\FindingSnack\FindingSnack.h" />
-    <ClInclude Include="Sources\FindingSnack\MainMenu\MainMenu.h" />
-    <ClInclude Include="Sources\FindingSnack\SelectStage\SelectStage.h" />
-    <ClInclude Include="Sources\FindingSnack\Stage\Stage.h" />
+    <ClInclude Include="Sources\FindingSnack\MainComponent.h" />
+    <ClInclude Include="Sources\FindingSnack\Waiter.h" />
+    <ClInclude Include="Sources\Test\HawaiianPizzaBuilder.h" />
+    <ClInclude Include="Sources\Test\Pizza.h" />
+    <ClInclude Include="Sources\Test\PizzaBuilder.h" />
+    <ClInclude Include="Sources\Test\SpicyPizzaBuilder.h" />
+    <ClInclude Include="Sources\Test\Waiter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
