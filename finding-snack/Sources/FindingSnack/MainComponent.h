@@ -1,15 +1,24 @@
 #pragma once
 #include "FindingSnack.h"
 
-class MainComponet : FindingSnack {
+class MainComponent : FindingSnack {
 public:
 
-	MainComponet() {
-		//mainMenu = createScene();
-		//stage = createScene(); 
+	MainComponent() {};
+	//mainMenu = createScene();
+	//stage = createScene(); 
+
+	virtual ~MainComponent() {};
+	void enter() {};
+	void exit() {};
+	void update() {};
+	void draw() {};
+	void event() {};
+
+
+	ScenePtr getScene() {
+		return mainMenu;
 	};
-
-
 
 
 };
