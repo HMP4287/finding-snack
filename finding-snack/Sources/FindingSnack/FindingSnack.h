@@ -1,10 +1,17 @@
 #pragma once
 #include <bangtal>
 
+// enum class 로 대체 피요 
+#define STAGE_MAX 20
+
 using namespace bangtal;
 // Product
 class FindingSnack
 {
+//enum class FindingSnackNumbers : unsigned int {
+//STAGE_MAX = 30
+//};
+
 // private or protected (MainMenu에서 잘 동작하는지 확인 필요)
 protected:
     // 변수와 메소드 Scene기반으로 나눌것인지, 아님 getter setter 등의 기준으로 나눌것인지 
@@ -24,69 +31,44 @@ protected:
     // => Component 안에서. 
 
 
-
-    // 스테이지 총 30개 (30을 상수?화)
-
-
     // MainMenuData 
     ScenePtr mainMenuScene;
     ObjectPtr startBtn; 
-
     // MainMenuData 
 
     // StageSelectData
     ScenePtr stageSelectScene;
 
-    const int STAGE_MAX = 30;
-    // isClear[30];
-    // 
+    // StageSelectDate  
 
-    // 
-    ScenePtr stagesScene[30];
+
+    // StagesData  
+    ScenePtr stagesScene[STAGE_MAX];
+    // StagesDate 
 
 public:
     // Constructor 
-    FindingSnack() {
-        //mainMenuScene = Scene::create("MainMenuScene", "Images/Background/startScene.PNG");
-
-        //stageSelectScene = NULL;
-        //for (int i = 0; i < 30; i++) stagesScene[i] = NULL;
-    }
+    FindingSnack() {}
     ~FindingSnack() {}
     // Constructor 
 
-
-
-
-
     // MainMenuMethod
-
     // setter 
     void setMainMenuScene(ScenePtr s) { mainMenuScene = s; };
     void setMainMenuStartBtn(ObjectPtr o) { startBtn = o; }; 
-
     // getter 
     ScenePtr getMainMenuScene() { return mainMenuScene; };
     ObjectPtr getMainMenuStartBtn() { return startBtn; };
-
-
     // reset 
     void resetMainMenu() { mainMenuScene = Scene::create("MainMenuScene", "Images/Background/startScene.png"); }; // 초기화 & 리셋 함수
-   
     // MainMenuMethod 
 
-
-
-
-
-
-
-
-
-
+    // StageSelectMethod
     void setStageSelectScene(ScenePtr ss) { stageSelectScene = ss; };
-    // 30 -> STAGE_MAX
-    void SetStages(ScenePtr s[30]) { for (int i = 0; i < 30; i++) stagesScene[i] = s[i]; };
+
+
+    // StageSelectMethod 
+    void SetStages(ScenePtr s[STAGE_MAX]) { for (int i = 0; i < STAGE_MAX; i++) stagesScene[i] = s[i]; };
 
 
 
