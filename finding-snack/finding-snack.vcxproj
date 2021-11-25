@@ -139,29 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\FindingSnack\MainMenuComponent\MainMenuComponent.cpp" />
     <ClCompile Include="Sources\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Images\startScene.PNG" />
+    <Image Include="Images\Background\startScene.png" />
+    <Image Include="Images\Button\startBtn.png" />
     <Image Include="Images\푸앙_기본형.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\FindingSnackLast\Builder.h" />
-    <ClInclude Include="Sources\FindingSnackLast\FindingSnackTest.h" />
-    <ClInclude Include="Sources\FindingSnackLast\MainMenuSceneBuilder.h" />
-    <ClInclude Include="Sources\FindingSnackTest\Builder.h" />
-    <ClInclude Include="Sources\FindingSnackTest\FindingSnack.h" />
-    <ClInclude Include="Sources\FindingSnackTest\FindingSnackTest.h" />
-    <ClInclude Include="Sources\FindingSnackTest\MainMenuSceneBuilder.h" />
-    <ClInclude Include="Sources\FindingSnackTest\SceneBuilder.h" />
+    <ClInclude Include="Sources\FindingSnack\ComponentTemplate.h" />
     <ClInclude Include="Sources\FindingSnack\FindingSnack.h" />
-    <ClInclude Include="Sources\FindingSnack\MainComponent.h" />
-    <ClInclude Include="Sources\FindingSnack\Waiter.h" />
-    <ClInclude Include="Sources\Test\HawaiianPizzaBuilder.h" />
-    <ClInclude Include="Sources\Test\Pizza.h" />
-    <ClInclude Include="Sources\Test\PizzaBuilder.h" />
-    <ClInclude Include="Sources\Test\SpicyPizzaBuilder.h" />
-    <ClInclude Include="Sources\Test\Waiter.h" />
+    <ClInclude Include="Sources\FindingSnack\MainMenuComponent\MainMenuComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
