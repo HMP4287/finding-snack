@@ -18,12 +18,18 @@
     <ClCompile Include="Sources\Main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Sources\FindingSnack\MainMenuComponent\MainMenuComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Images\푸앙_기본형.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Images\startScene.PNG">
+    <Image Include="Images\Background\startScene.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\startBtn.png">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
@@ -31,49 +37,10 @@
     <ClInclude Include="Sources\FindingSnack\FindingSnack.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\FindingSnack\MainComponent.h">
+    <ClInclude Include="Sources\FindingSnack\MainMenuComponent\MainMenuComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\FindingSnack\Waiter.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Test\Pizza.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Test\PizzaBuilder.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Test\HawaiianPizzaBuilder.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Test\SpicyPizzaBuilder.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Test\Waiter.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\FindingSnackTest\FindingSnack.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\FindingSnackTest\SceneBuilder.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\FindingSnackTest\MainMenuSceneBuilder.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\FindingSnackTest\Builder.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\FindingSnackTest\FindingSnackTest.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\FindingSnackLast\MainMenuSceneBuilder.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\FindingSnackLast\Builder.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\FindingSnackLast\FindingSnackTest.h">
+    <ClInclude Include="Sources\FindingSnack\ComponentTemplate.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
