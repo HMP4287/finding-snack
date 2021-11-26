@@ -1,4 +1,4 @@
-# finding-snack
+# Finding Snack
 <hr/>
 
 # 게임 설명 
