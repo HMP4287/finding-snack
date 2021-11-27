@@ -1,7 +1,9 @@
 #include "MainMenuComponent.h"
 
-MainMenuComponent::MainMenuComponent(FindingSnack* r) {
+MainMenuComponent::MainMenuComponent(FindingSnackObject* r) {
     root = r;
+    root->mainMenuComponent = this;
+    //mainMenuComponent = this;
     construct();
 }
 
@@ -12,9 +14,18 @@ void MainMenuComponent::enter() {
     // MainMenuScene 초기화 
     root->setMainMenuScene(Scene::create("MainMenuScene", "Images/Background/startScene.png"));
     // startBtn 초기화 
-    root->setMainMenuStartBtn(Object::create("Images/Button/startBtn.png", root->getMainMenuScene(), 430, 100));
+    root->setMainMenuStartBtn(Object::create("Images/Button/start.png", root->getMainMenuScene(), 560, 150));
+    // gameInfoBtn 초기화 
+    root->setGameInfoBtn(Object::create("Images/Button/explain.png", root->getMainMenuScene(), 560, 60));
 
+
+    // 게임옵션은 Stage진입 시 재 등장 
+    setGameOption(GameOption::GAME_OPTION_ROOM_TITLE, false);
+    setGameOption(GameOption::GAME_OPTION_MESSAGE_BOX_BUTTON, false);
+    setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
     
+
+
 };
 
 // 객체가 삭제/제거될때 메모리 삭제 등 소멸자 역할을 하게 된다.
@@ -34,10 +45,17 @@ void MainMenuComponent::event() {
     root->getMainMenuStartBtn()->setOnMouseCallback([&](auto, auto, auto, auto)->bool {
 
         // 마우스 클릭하면 SelectStage 씬으로 넘어갈 것임. 
-        //stageSelectScene enter();
+        root->getStageSelectScene()->enter();
+
+
 		return true;
 	});
 
+
+    root->getGameInfoBtn()->setOnMouseCallback([&](auto, auto, auto, auto)->bool {
+
+        return true;
+    });
 
 
 
@@ -48,5 +66,7 @@ void MainMenuComponent::event() {
 // 만들어 놓은 함수들을 가지고 로직 수행
 void MainMenuComponent::construct() {
     enter();
+    event();
+
 
 }

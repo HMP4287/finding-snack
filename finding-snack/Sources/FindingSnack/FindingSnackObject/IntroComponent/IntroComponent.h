@@ -1,22 +1,29 @@
 #pragma once
+#include "../FindingSnackObject.h"
 
-#include "../FindingSnack.h"
-
-// 상속은 자원 공유위함 
-// root 사용은 최상위 자원을 확실하게 사용하기 위함 
-
-// ConcreteBuilder
-class MainMenuComponent : public FindingSnack
+// Component
+class IntroComponent : public FindingSnackObject
 {
 public:
-    FindingSnack* root; 
-   
-    MainMenuComponent(FindingSnack* r);
-    ~MainMenuComponent();
+    FindingSnackObject* root;
+
+    ScenePtr room;
+    ObjectPtr puang;
+    ObjectPtr chair;
+    ObjectPtr door[2]; // close open
+    ScenePtr nextDay;
+    ObjectPtr thinkingPuang;
+    ObjectPtr nowhere;
+    ObjectPtr puangFinding;
+    ObjectPtr myBurgerIsLost;
+
+
+    IntroComponent(FindingSnackObject* r);
+    ~IntroComponent();
 
     // 객체가 생성될때 변수 초기화 및 초기 셋팅등 생성자 역할을 하게 된다.
-    void enter(); 
-    
+    void enter();
+
     // 객체가 삭제/제거될때 메모리 삭제 등 소멸자 역할을 하게 된다.
     void exit();
 
@@ -33,3 +40,4 @@ public:
     // 만들어 놓은 함수들을 가지고 로직 수행
     void construct();
 };
+
