@@ -7,15 +7,18 @@ class IntroComponent : public FindingSnackObject
 public:
     FindingSnackObject* root;
 
+    ObjectPtr clickToStart;
+
     ScenePtr room;
     ObjectPtr puang;
     ObjectPtr chair;
-    ObjectPtr door[2]; // close open
-    ScenePtr nextDay;
-    ObjectPtr thinkingPuang;
-    ObjectPtr nowhere;
-    ObjectPtr puangFinding;
-    ObjectPtr myBurgerIsLost;
+    ObjectPtr door; // close open
+    TimerPtr changePuangLove;
+    TimerPtr chagePuangCauBurger;
+    TimerPtr goToMainMenuScene;
+    TimerPtr trainerIn;
+    TimerPtr trainerOut;
+
 
 
     IntroComponent(FindingSnackObject* r);

@@ -1,6 +1,6 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
-#define STAGE_MAX 20
+#define STAGE_MAX 10
 
 #include <bangtal>
 class FindingSnack {

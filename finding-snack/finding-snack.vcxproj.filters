@@ -44,127 +44,7 @@
     <Image Include="Images\Button\start.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Images\Button\clearNum\1.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\2.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\3.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\4.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\5.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\6.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\7.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\8.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\9.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\10.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\11.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\12.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\13.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\14.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\15.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\16.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\17.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\18.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\19.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\clearNum\20.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\1.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\2.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\3.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\4.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\5.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\6.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\8.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\9.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\10.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\11.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\12.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\13.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\14.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\15.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\16.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\17.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\18.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\19.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\20.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
     <Image Include="Images\Background\stageSelection.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="Images\Button\unclearNum\7.png">
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Images\Button\home.png">
@@ -258,6 +138,150 @@
       <Filter>리소스 파일</Filter>
     </Image>
     <Image Include="Images\Puang\푸앙_윙크.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Background\background.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\3.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\4.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\5.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\6.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\7.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\8.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\9.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\10.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\3.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\4.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\5.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\6.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\7.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\8.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\9.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\10.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\doorClose.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\doorHalfOpen.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\doorOpen.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\doorOpenTrainer.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\3.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\4.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\5.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\6.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\7.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\8.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\9.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\10.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\restartBtn.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\hamburger.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallclosetCloseTrainer.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallclosetOpenTrainer.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\푸앙_운동.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\푸앙_운동2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\gameOverScene.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\clearBackground.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bitjaru.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\plantClose.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\plantOpen.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stage2LeftRoom.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallclosetBitjaru.PNG">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>

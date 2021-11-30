@@ -40,6 +40,8 @@ protected:
     int clearStage[STAGE_MAX];
     int currentStage;
 
+    int clickedStage; 
+
     // StageSelectData   --------------------------------------------------------------------------------------------------  
 
 
@@ -103,7 +105,8 @@ public:
     void setCurrentStage(int stageNum) { currentStage = stageNum; };
     int getCurrentStage() { return currentStage; };
 
-
+    void setClickedStage(int stageNum) { clickedStage = stageNum; };
+    int getClickedStage() { return clickedStage; };
 
 
 
@@ -119,7 +122,8 @@ public:
 
 
 
-    void start() { startGame(introScene); };
+    // 추후 인트로로 시작되게 변경해줘야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    void start() { startGame(stageSelectScene); };
     // 객체가 생성될때 변수 초기화 및 초기 셋팅등 생성자 역할을 하게 된다.
     void enter() {};
 

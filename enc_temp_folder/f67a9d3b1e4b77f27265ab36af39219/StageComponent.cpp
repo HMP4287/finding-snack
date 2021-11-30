@@ -324,7 +324,6 @@ void StageComponent::makeStage2() {
   
 
     // 화분, 벽, 서랍 
-    plant = Object::create("Images/Stage/plantClose.png", roomRightScene, 100, 450);
     wallCloset = Object::create("Images/Stage/wallclosetBitjaru.PNG", roomRightScene, 250, 250);
 
 }

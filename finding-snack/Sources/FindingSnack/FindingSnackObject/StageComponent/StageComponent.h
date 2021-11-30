@@ -9,11 +9,57 @@ public:
 
     // Stage elements
     // 스테이지 진입시 제일 처음화면 room == stageScene
-    ScenePtr room;
-    ScenePtr roomSide;
-    
-    ObjectPtr window[4]; // 좌우 닫힌거, 좌 열린거, 우열린거, 다열린거 // 창문열린것도 추가해야할 수있음 
+    ScenePtr showStageScene; 
+    TimerPtr showStageTimer;
 
+    ScenePtr roomLeftScene;
+    ScenePtr roomRightScene;
+
+    ObjectPtr goRightRoomBtn;
+    ObjectPtr goLeftRoomBtn;
+
+    // Default btn 
+    ObjectPtr stageRestartBtnL;
+    ObjectPtr goBackMainMenuBtnL;
+    ObjectPtr stageRestartBtnR;
+    ObjectPtr goBackMainMenuBtnR;
+
+
+    ObjectPtr closet;
+    ObjectPtr windowLeft;
+    ObjectPtr windowRight; 
+    ObjectPtr wallCloset; // 대각선 
+    ObjectPtr sofa; // 대각선 
+    ObjectPtr sofaCushionLeft;
+    ObjectPtr sofaCushionRight;
+
+
+    // stage2
+    ObjectPtr gymMan;
+    ObjectPtr plant;
+
+
+    // 성공 시 
+    ObjectPtr hamburger;
+    ScenePtr gameClearScene;
+    TimerPtr gameClearTimer;
+
+    // 실패 애니메이션 
+    ObjectPtr puangFail;
+    
+    ScenePtr gameOverScene;
+
+    // puang should gym 
+    TimerPtr puangFailMoving;
+    TimerPtr puangCrying;
+    int puangWeightCnt;
+    TimerPtr gameOverPuangWeightUp;
+    TimerPtr gameOverPuangWeightDown;
+
+    TimerPtr wallClosetGameOver; 
+
+
+    
 
     StageComponent(FindingSnackObject* r);
     ~StageComponent();
@@ -42,6 +88,7 @@ public:
 
 
     void makeStage1();
+    void makeStage2();
 
 };
 
