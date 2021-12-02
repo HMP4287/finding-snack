@@ -18,29 +18,437 @@
     <ClCompile Include="Sources\Main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\FindingSnack\MainMenuComponent\MainMenuComponent.cpp">
+    <ClCompile Include="Sources\FindingSnack\FindingSnackObject\MainMenuComponent\MainMenuComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\FindingSnack\FindingSnackObject\StageSelectComponent\StageSelectComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\FindingSnack\ComponentTemplate.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\FindingSnack\FindingSnackObject\StageComponent\StageComponent.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\FindingSnack\FindingSnackObject\IntroComponent\IntroComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Images\푸앙_기본형.png">
-      <Filter>리소스 파일</Filter>
-    </Image>
     <Image Include="Images\Background\startScene.png">
       <Filter>리소스 파일</Filter>
     </Image>
-    <Image Include="Images\Button\startBtn.png">
+    <Image Include="Images\Button\explain.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\start.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Background\stageSelection.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\home.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bookDrop.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bookItem.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\closetClose.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\closetOpen.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\curtainClose.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\cushion.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\drawerClose.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\drawerOpen.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\goLeft.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\goRight.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\ladder.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\leftWindow.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\paris.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\plant.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\refrigeratorClose.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\rightWindow.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\room.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\roomSide.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\sofaFront.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\sofaSide.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageSelection.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stand.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallclosetClose.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallclosetOpen.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Puang\푸앙_뒷모습.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Puang\푸앙_절규.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Puang\푸앙_카우버거.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Trainer\trainer.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Puang\푸앙_사랑.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Puang\푸앙_윙크.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Background\background.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\3.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\4.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\5.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\6.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\7.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\8.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\9.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\clearNumbers\10.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\3.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\4.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\5.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\6.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\7.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\8.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\9.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\unclearNumbers\10.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\doorClose.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\doorHalfOpen.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\doorOpen.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\doorOpenTrainer.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\3.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\4.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\5.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\6.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\7.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\8.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\9.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stageStart\10.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Button\restartBtn.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\hamburger.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallclosetCloseTrainer.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallclosetOpenTrainer.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\푸앙_운동.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\푸앙_운동2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\gameOverScene.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\clearBackground.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bitjaru.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\plantClose.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\plantOpen.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\stage2LeftRoom.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallclosetBitjaru.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bitjaruLeft.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bitjaruRight.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bookInBookshelf.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bookInBookshelf1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bookshelf.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallClosetBClose.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallClosetshelfOpen.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\ladderBroken.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\wallCloBClosed.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Puang\푸앙_눕.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\cannotPark.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\canPark.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\car.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\spraySpin.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\spray.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Puang\푸앙_뒷_손.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bottle.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bottleBreak.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\closetLock.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\closetUnlock.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\cloud.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\curtainSide.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\windowSide.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\windowSLO.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\windowSideOpen.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\windowSRO.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\key2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\key3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\key4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\key.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Trainer\trainer1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Trainer\trainer2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Trainer\trainer3.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Trainer\trainer4.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\knife.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\rDC.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\rDO.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\rUC.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\rUO.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\sofaTrainer.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\table.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\watermelon.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\watermelonBreak.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\푸앙_자르기1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\푸앙_자르기2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\푸앙_사랑.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Puang\푸앙_자르기1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Puang\푸앙_자르기2.PNG">
       <Filter>리소스 파일</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\FindingSnack\FindingSnack.h">
+    <ClInclude Include="Sources\FindingSnack\FindingSnackObject\FindingSnackObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\FindingSnack\MainMenuComponent\MainMenuComponent.h">
+    <ClInclude Include="Sources\FindingSnack\FindingSnackObject\MainMenuComponent\MainMenuComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Sources\FindingSnack\ComponentTemplate.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\FindingSnack\FindingSnackObject\StageSelectComponent\StageSelectComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\FindingSnack\FindingSnack.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\FindingSnack\FindingSnackObject\StageComponent\StageComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\FindingSnack\FindingSnackObject\IntroComponent\IntroComponent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
