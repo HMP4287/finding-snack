@@ -35,8 +35,73 @@ public:
 
 
     // stage2
+    ObjectPtr puangBitjaru;
     ObjectPtr gymMan;
     ObjectPtr plant;
+    ObjectPtr drawer;
+    ObjectPtr bitjaru;
+    ObjectPtr bitjaruTemp;
+    bool burgerMoved;
+    TimerPtr burgerMovedTimer;
+    TimerPtr burgerMovedTimerAfter;
+
+    // stage3
+    ObjectPtr bookshelf;
+    ObjectPtr book1;
+    ObjectPtr book2;
+    ObjectPtr book3;
+    ObjectPtr bookTemp;
+    ObjectPtr brokenChair;
+    ObjectPtr brokenChairTemp;
+    ObjectPtr stand;
+    ObjectPtr puangJumping;
+    TimerPtr puangFallDown;
+    TimerPtr puangFallDownAfter;
+    TimerPtr puangLovingTimer;
+    int burgerReach;
+    bool wallIsOpen;
+
+    // stage4
+    ObjectPtr car;
+    ObjectPtr sign;
+    ObjectPtr paint;
+    ObjectPtr paintTemp;
+    ObjectPtr paintingPuang;
+    ObjectPtr carMan;
+    TimerPtr puangComePaint;
+    TimerPtr carManComming;
+    int carManX;
+    TimerPtr carManInside;
+    TimerPtr carOut;
+    int carX;
+    
+    // stage5
+
+    // stage6
+    ObjectPtr bottle;
+    int windowStatus;
+    ObjectPtr key;
+    ObjectPtr cloud;
+    TimerPtr keySpinTimer;
+    TimerPtr gymManSpinTimer;
+    bool gymManSpin;
+    int gymStatus;
+    bool keySpin;
+    int keyStatus;
+    bool closetUnlocked;
+    
+    // stage7
+    ObjectPtr refrigeratorUp;
+    ObjectPtr refrigeratorDown;
+    ObjectPtr watermelon;
+    ObjectPtr watermelonDesk;
+    int puangHittingStatus;
+    int hitCnt;
+    ObjectPtr desk;
+    ObjectPtr puangHitting;
+    
+
+
 
 
     // 성공 시 
@@ -56,7 +121,7 @@ public:
     TimerPtr gameOverPuangWeightUp;
     TimerPtr gameOverPuangWeightDown;
 
-    TimerPtr wallClosetGameOver; 
+    TimerPtr facedGameOver; 
 
 
     
@@ -83,12 +148,24 @@ public:
     // 만들어 놓은 함수들을 가지고 로직 수행
     void construct();
 
-    
+    // resetBag()호출이 필요한 위치들 
+    // stage들어갈때, 
+    // stage에서 나올때 
+    // - restart
+    // - home
+    // - fail
+    // - success
+    void resetBag();
+
     void makeStage(int stageNum);
 
 
     void makeStage1();
     void makeStage2();
-
+    void makeStage3();
+    void makeStage4();
+    void makeStage5();
+    void makeStage6();
+    void makeStage7();
 };
 
