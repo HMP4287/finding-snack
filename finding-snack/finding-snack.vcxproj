@@ -183,6 +183,10 @@
     <Image Include="Images\Puang\푸앙_자르기2.PNG" />
     <Image Include="Images\Puang\푸앙_절규.png" />
     <Image Include="Images\Puang\푸앙_카우버거.png" />
+    <Image Include="Images\Stage\angrybird.png" />
+    <Image Include="Images\Stage\bigFishOpenV.png" />
+    <Image Include="Images\Stage\bigFishStand.png" />
+    <Image Include="Images\Stage\bird.png" />
     <Image Include="Images\Stage\bitjaru.png" />
     <Image Include="Images\Stage\bitjaruLeft.png" />
     <Image Include="Images\Stage\bitjaruRight.png" />
@@ -196,6 +200,7 @@
     <Image Include="Images\Stage\cannotPark.png" />
     <Image Include="Images\Stage\canPark.png" />
     <Image Include="Images\Stage\car.png" />
+    <Image Include="Images\Stage\chicken.png" />
     <Image Include="Images\Stage\clearBackground.PNG" />
     <Image Include="Images\Stage\closetClose.png" />
     <Image Include="Images\Stage\closetLock.png" />
@@ -211,6 +216,7 @@
     <Image Include="Images\Stage\doorOpenTrainer.png" />
     <Image Include="Images\Stage\drawerClose.png" />
     <Image Include="Images\Stage\drawerOpen.png" />
+    <Image Include="Images\Stage\fish.png" />
     <Image Include="Images\Stage\gameOverScene.PNG" />
     <Image Include="Images\Stage\goLeft.PNG" />
     <Image Include="Images\Stage\goRight.PNG" />
@@ -227,6 +233,7 @@
     <Image Include="Images\Stage\plant.png" />
     <Image Include="Images\Stage\plantClose.png" />
     <Image Include="Images\Stage\plantOpen.png" />
+    <Image Include="Images\Stage\plate.png" />
     <Image Include="Images\Stage\refrigeratorClose.png" />
     <Image Include="Images\Stage\rDC.png" />
     <Image Include="Images\Stage\rDO.png" />

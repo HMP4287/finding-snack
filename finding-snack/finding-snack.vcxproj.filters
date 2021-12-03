@@ -428,6 +428,27 @@
     <Image Include="Images\Puang\푸앙_자르기2.PNG">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Images\Stage\plate.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\fish.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\chicken.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bird.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\angrybird.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bigFishStand.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bigFishOpenV.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\FindingSnack\FindingSnackObject\FindingSnackObject.h">

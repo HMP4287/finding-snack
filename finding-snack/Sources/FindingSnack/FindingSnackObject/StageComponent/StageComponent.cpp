@@ -146,6 +146,10 @@ void StageComponent::resetBag() {
         watermelon->drop();
         watermelon->hide();
     }
+    if (fish) {
+        fish->drop();
+        fish->hide();
+    }
 
 }
 
@@ -170,6 +174,8 @@ void StageComponent::makeStage(int stageNum) {
         makeStage6();
     else if (stageNum == 7)
         makeStage7();
+    else if (stageNum == 8)
+        makeStage8();
 
 }
 
@@ -1487,3 +1493,275 @@ void StageComponent::makeStage7() {
     });
 
 }
+
+void StageComponent::makeStage8() {
+    // fish 
+    comeBigFish = Timer::create(0.1f);
+    comeBigFishX = 700;
+    eatingFish = Timer::create(2.f);
+
+    givingFish = Timer::create(1.f);
+    // 성공요소 
+    gameClearScene = Scene::create("gameClearScene", "Images/Stage/clearBackground.PNG");
+    gameClearTimer = Timer::create(2.f);
+    // 
+    // 
+    // 왼쪽화면 
+    // 냉장고 
+    // 생선
+    // 닭가슴살?
+    // 그릇에다 주면 ㅇㅋ 
+    // 직접주면 헬창 등장 
+    hamburger = Object::create("Images/Stage/hamburger.png", roomLeftScene, 950, 150);
+    hamburgerCanClick = false;
+    
+    refrigeratorUp = Object::create("Images/Stage/rUC.png", roomLeftScene, 250, 400);
+    refrigeratorDown = Object::create("Images/Stage/rDC.png", roomLeftScene, 250, 150);
+    
+    dish = Object::create("Images/Stage/plate.png", roomLeftScene, 100, 50);
+    dish->hide();
+
+    fish = Object::create("Images/Stage/fish.png", roomLeftScene, 310, 280);
+    fish->hide();
+    chicken = Object::create("Images/Stage/chicken.png", roomLeftScene, 310, 180);
+    chicken->hide();
+
+    fly = Object::create("Images/Stage/paris.png", roomRightScene, 250, 250);
+    fly->setScale(7.f);
+    
+    flyLeft = Object::create("Images/Stage/paris.png", roomLeftScene, 100, 50);
+
+    //fly->setScale(5.f);
+
+    
+    bigFish = Object::create("Images/Stage/bigFishStand.png", roomLeftScene, 700, 50);
+    bigFish->setScale(0.6f);
+    gameOverScene = Scene::create("gameOverScene", "Images/Stage/gameOverScene.PNG");
+    facedGameOver = Timer::create(1.f); // 그냥 실패 절차중 하나임 
+    puangFailMoving = Timer::create(1.f);
+    puangCrying = Timer::create(1.f);
+    gameOverPuangWeightUp = Timer::create(1.f);
+    gameOverPuangWeightDown = Timer::create(1.f);
+    puangWeightCnt = 0;
+    puangFail = Object::create("Images/Puang/푸앙_뒷모습.png", roomLeftScene, 100, 50);
+    puangFail->hide();
+    refrigeratorUp->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        refrigeratorUp->setImage("Images/Stage/rUO.png");
+        return true;
+    });
+    flyLeft->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        flyLeft->hide();
+        dish->show();
+        return true;
+    });
+    fly->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        fly->hide();
+        return true;
+    });
+
+
+    refrigeratorDown->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        refrigeratorDown->setImage("Images/Stage/rDO.png");
+        fish->show();
+        chicken->show();
+        return true;
+    });
+
+    fish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        fish->pick();
+        return true;
+    });
+
+    // 실패 조건 
+    chicken->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        //chicken->hide();
+        puangFail->show();
+
+        puangFailMoving->start();
+        // 실패 조건 
+        return true;
+    });
+
+
+    // 실패조건 추가할 것 
+    puangFailMoving->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        bigFish->setImage("Images/Stage/bigFishOpenV.png");
+        bigFish->setScale(0.6f);
+        puangCrying->start();
+        return true;
+    });
+
+    puangCrying->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        puangFail->setImage("Images/Puang/푸앙_절규.png");
+        if (fishTemp) {
+            fishTemp->hide();
+        }
+
+        facedGameOver->start();
+        return true;
+    });
+
+    facedGameOver->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        
+        //root->getStageSelectScene()->enter();
+        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+
+        resetBag();
+        gameOverScene->enter();
+        puangFail->show();
+        puangFail->setImage("Images/Stage/푸앙_운동.png");
+        puangFail->locate(gameOverScene, 350, 50);
+        gameOverPuangWeightDown->start();
+
+        //puangFail->setImage("Images/Stage/푸앙_운동.png");
+        //puangFail->locate(gameOverScene, 250, 250);
+        // 실패하는 모션들 
+        // 인벤토리 박스 삭제 필요, 
+        return true;
+    });
+    gameOverPuangWeightUp->setOnTimerCallback([&](TimerPtr timer)->bool {
+        if (puangWeightCnt < 4) {
+            timer->stop();
+            timer->set(1.f);
+            puangFail->setImage("Images/Stage/푸앙_운동.png");
+            gameOverPuangWeightDown->start();
+            puangWeightCnt++;
+        }
+        else {
+
+            root->getStageSelectScene()->enter();
+            
+        }
+
+        return true;
+    });
+    gameOverPuangWeightDown->setOnTimerCallback([&](TimerPtr timer)->bool {
+        if (puangWeightCnt < 4) {
+            timer->stop();
+            timer->set(1.f);
+            puangFail->setImage("Images/Stage/푸앙_운동2.png");
+            //puangFail->locate(gameOverScene, 250, 250);
+            gameOverPuangWeightUp->start();
+            puangWeightCnt++;
+        }
+        else {
+            root->getStageSelectScene()->enter();
+        }
+
+
+        return true;
+    });
+
+    dish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        // 먹는 애니 추가 
+        if (fish->isHanded()) {
+            fish->drop();
+            fish->hide();
+            // 그릇위에 생성 
+            // 새 접근 // 버거생김 
+            // 새 먹음 
+            puangGivingFish = Object::create("Images/Puang/푸앙_뒷모습.png", roomLeftScene, 130, 50);
+
+            //
+            givingFish->start();
+
+        
+        }
+        return true;
+    });
+    givingFish->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        puangGivingFish->hide();
+        fishTemp = Object::create("Images/Stage/fish.png", roomLeftScene, 120, 80);
+       
+        comeBigFish->start();
+
+        return true;
+    });
+    comeBigFish->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        if (comeBigFishX > 200) {
+            timer->set(0.1f);
+            comeBigFishX -= 10;
+            bigFish->locate(roomLeftScene, comeBigFishX, 50);
+            timer->start();
+        }
+        else {
+            fishTemp->hide();
+            bigFish->setImage("Images/Stage/bigFishEating.png");
+            eatingFish->start();
+
+        }
+
+        return true;
+    });
+    eatingFish->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        bigFish->setImage("Images/Stage/bigFishStand.png");
+        
+        hamburgerCanClick = true;
+
+
+        return true;
+    });
+
+    bigFish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        // 실패 조건2 
+        if (fish->isHanded()) {
+            puangFail->show();
+            puangFail->locate(roomLeftScene, 600, 150);
+            puangFail->setImage("Images/Puang/푸앙_뒷_손.png");
+            fishTemp = Object::create("Images/Stage/fish.png", roomLeftScene, 750, 250);
+
+            puangFailMoving->start();
+             
+        }
+        return true;
+    });
+
+
+    hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)-> bool {
+        //stage ++ 
+        // game clear
+        // menu Btn ?
+        // go next game ? 
+        if (hamburgerCanClick) {
+            setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+            gameClearScene->enter();
+            // 숫자 추가 
+            // 1탄을 계속 깨면 2,3,탄이깨지는문제 발생 
+            if (root->getCurrentStage() == root->getClickedStage())
+                root->setCurrentStage(root->getCurrentStage() + 1);
+
+            gameClearTimer->start();
+        }
+
+
+        return true;
+    });
+    gameClearTimer->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        root->getStageSelectScene()->enter();
+
+        root->stageSelectComponent->update();
+
+        return true;
+    });
+
+
+
+
+    // 오른쪽 화면 파리하나
+    // 잡으면 사라지게 
+
+    
+    // 입닫은거 
+    // 입벌린거 -> 헬창 
+    // 새 먹는거
+        
+
+}
+

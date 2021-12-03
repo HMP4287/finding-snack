@@ -100,8 +100,23 @@ public:
     ObjectPtr desk;
     ObjectPtr puangHitting;
     
+    // stage8
+    ObjectPtr fish; 
+    ObjectPtr puangGivingFish;
+    ObjectPtr fishTemp; 
 
-
+    ObjectPtr chicken;
+    ObjectPtr bigFish;
+    ObjectPtr dish; 
+    ObjectPtr gymManFood;
+    ObjectPtr fly; 
+    ObjectPtr flyLeft;
+    int comeBigFishX;
+    //givingfish
+    TimerPtr givingFish;
+    TimerPtr comeBigFish;
+    TimerPtr eatingFish;
+    bool hamburgerCanClick;
 
 
     // 성공 시 
@@ -164,8 +179,9 @@ public:
     void makeStage2();
     void makeStage3();
     void makeStage4();
-    void makeStage5();
+    void makeStage5(); // 미완성 
     void makeStage6();
     void makeStage7();
+    void makeStage8(); 
 };
 
