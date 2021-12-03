@@ -7,26 +7,32 @@ class StageComponent : public FindingSnackObject
 public:
     FindingSnackObject* root;
 
-    // Default Stage elements
+    // Stage elements
+    // 스테이지 진입시 제일 처음화면 room == stageScene
     ScenePtr showStageScene; 
     TimerPtr showStageTimer;
+
     ScenePtr roomLeftScene;
     ScenePtr roomRightScene;
+
     ObjectPtr goRightRoomBtn;
     ObjectPtr goLeftRoomBtn;
+
+    // Default btn 
     ObjectPtr stageRestartBtnL;
     ObjectPtr goBackMainMenuBtnL;
     ObjectPtr stageRestartBtnR;
     ObjectPtr goBackMainMenuBtnR;
 
-    // stage1 
+
     ObjectPtr closet;
     ObjectPtr windowLeft;
     ObjectPtr windowRight; 
-    ObjectPtr wallCloset; 
-    ObjectPtr sofa;  
+    ObjectPtr wallCloset; // 대각선 
+    ObjectPtr sofa; // 대각선 
     ObjectPtr sofaCushionLeft;
     ObjectPtr sofaCushionRight;
+
 
     // stage2
     ObjectPtr puangBitjaru;
@@ -78,6 +84,9 @@ public:
     ObjectPtr weight;
     ObjectPtr weightTemp; 
     int cntTwo; 
+    
+    
+
     double ballonScale;
     int ballonX;
     int ballonY;
@@ -112,6 +121,7 @@ public:
     ObjectPtr fish; 
     ObjectPtr puangGivingFish;
     ObjectPtr fishTemp; 
+
     ObjectPtr chicken;
     ObjectPtr bigFish;
     ObjectPtr dish; 
@@ -119,6 +129,7 @@ public:
     ObjectPtr fly; 
     ObjectPtr flyLeft;
     int comeBigFishX;
+    //givingfish
     TimerPtr givingFish;
     TimerPtr comeBigFish;
     TimerPtr eatingFish;
@@ -132,12 +143,16 @@ public:
 
     // 실패 애니메이션 
     ObjectPtr puangFail;
+    
     ScenePtr gameOverScene;
+
+    // puang should gym 
     TimerPtr puangFailMoving;
     TimerPtr puangCrying;
     int puangWeightCnt;
     TimerPtr gameOverPuangWeightUp;
     TimerPtr gameOverPuangWeightDown;
+
     TimerPtr facedGameOver; 
 
 
@@ -165,6 +180,13 @@ public:
     // 만들어 놓은 함수들을 가지고 로직 수행
     void construct();
 
+    // resetBag()호출이 필요한 위치들 
+    // stage들어갈때, 
+    // stage에서 나올때 
+    // - restart
+    // - home
+    // - fail
+    // - success
     void resetBag();
 
     void makeStage(int stageNum);

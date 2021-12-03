@@ -449,6 +449,24 @@
     <Image Include="Images\Stage\bigFishOpenV.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Images\Stage\trainerD1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerD2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerDF.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\elephant.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\ballonSmall.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\weight.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\FindingSnack\FindingSnackObject\FindingSnackObject.h">

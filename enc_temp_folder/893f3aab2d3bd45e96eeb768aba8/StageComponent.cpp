@@ -1839,7 +1839,11 @@ void StageComponent::makeStage8() {
             // »õ Á¢±Ù // ¹ö°Å»ý±è 
             // »õ ¸ÔÀ½ 
             puangGivingFish = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 130, 50);
+
+            //
             givingFish->start();
+
+        
         }
         return true;
     });
@@ -1931,8 +1935,6 @@ void StageComponent::makeStage8() {
 void StageComponent::makeStage9() {}
 
 void StageComponent::makeStage10() {
-
-
 
 
 } 

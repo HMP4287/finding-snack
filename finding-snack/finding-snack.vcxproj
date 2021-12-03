@@ -184,6 +184,7 @@
     <Image Include="Images\Puang\푸앙_절규.png" />
     <Image Include="Images\Puang\푸앙_카우버거.png" />
     <Image Include="Images\Stage\angrybird.png" />
+    <Image Include="Images\Stage\ballonSmall.png" />
     <Image Include="Images\Stage\bigFishOpenV.png" />
     <Image Include="Images\Stage\bigFishStand.png" />
     <Image Include="Images\Stage\bird.png" />
@@ -216,6 +217,7 @@
     <Image Include="Images\Stage\doorOpenTrainer.png" />
     <Image Include="Images\Stage\drawerClose.png" />
     <Image Include="Images\Stage\drawerOpen.png" />
+    <Image Include="Images\Stage\elephant.png" />
     <Image Include="Images\Stage\fish.png" />
     <Image Include="Images\Stage\gameOverScene.PNG" />
     <Image Include="Images\Stage\goLeft.PNG" />
@@ -261,6 +263,9 @@
     <Image Include="Images\Stage\stageStart\9.PNG" />
     <Image Include="Images\Stage\stand.png" />
     <Image Include="Images\Stage\table.png" />
+    <Image Include="Images\Stage\trainerD1.png" />
+    <Image Include="Images\Stage\trainerD2.png" />
+    <Image Include="Images\Stage\trainerDF.png" />
     <Image Include="Images\Stage\wallCloBClosed.PNG" />
     <Image Include="Images\Stage\wallclosetBitjaru.PNG" />
     <Image Include="Images\Stage\wallClosetBClose.PNG" />
@@ -271,6 +276,7 @@
     <Image Include="Images\Stage\wallClosetshelfOpen.PNG" />
     <Image Include="Images\Stage\watermelon.png" />
     <Image Include="Images\Stage\watermelonBreak.png" />
+    <Image Include="Images\Stage\weight.png" />
     <Image Include="Images\Stage\windowSide.png" />
     <Image Include="Images\Stage\windowSLO.png" />
     <Image Include="Images\Stage\windowSideOpen.png" />
