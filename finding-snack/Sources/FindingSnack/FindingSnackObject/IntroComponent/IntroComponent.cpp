@@ -21,11 +21,11 @@ void IntroComponent::enter() {
     door = Object::create("Images/Stage/doorClose.png", room, 920, 170);
 
 
-    changePuangLove = Timer::create(2.f);
-    chagePuangCauBurger = Timer::create(2.f);
-    goToMainMenuScene = Timer::create(2.f);
-    trainerIn = Timer::create(2.f);
-    trainerOut = Timer::create(2.f);
+    changePuangLove = Timer::create(3.f);
+    chagePuangCauBurger = Timer::create(3.f);
+    goToMainMenuScene = Timer::create(3.f);
+    trainerIn = Timer::create(3.f);
+    trainerOut = Timer::create(3.f);
 
 };
 
@@ -38,6 +38,7 @@ void IntroComponent::update() {
     clickToStart->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         room->enter();
         changePuangLove->start();
+        
         return true;
     });
 

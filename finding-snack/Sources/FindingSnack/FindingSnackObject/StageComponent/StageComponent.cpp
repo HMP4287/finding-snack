@@ -2667,7 +2667,111 @@ void StageComponent::makeStage9() {
 
 void StageComponent::makeStage10() {
 
+    //root->setIntroScene(Scene::create("introSceneStart", "Images/Background/background.PNG"));
+
+    //clickToStart = Object::create("Images/Button/start.png", root->getIntroScene(), 560, 150);
+    setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+
+    //room = Scene::create("introScene", "Images/Stage/room.png");
+
+    //sofa = Object::create("Images/Stage/sofaFront.png", roomLeftScene, 200, 150);
+    //puangEnding = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 560, 50);
+
+    whiteDoor = Object::create("Images/Stage/doorOpen.png", roomLeftScene, 720, 140);
+
+    gymMan = Object::create("Images/Stage/Æ®·¹ÀÌ³Ê_»ßÁü.png", roomLeftScene, 200, 150);
+
+    hamburger = Object::create("Images/Stage/hamburger.png", roomLeftScene, 600, 50);
+
+    puangEnding = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 650, 50);
+    puangEnding->hide();
+    messageBox = Object::create("Images/Stage/¼û±æµ¥¾ø±ÙÀ°2.PNG", roomLeftScene, 900, 600);
+    messageBox->hide();
+    puangGoing = Timer::create(3.f);
+    gymManGoOut = Timer::create(0.1f);
+    gymManGoOutAfter = Timer::create(2.f);
+    gymManGoOutBefore = Timer::create(2.f);
+    gymManGoOutX = 200;
+    gameClearScene = Scene::create("gameClearScene", "Images/Stage/clearBackground.PNG");
+    gameClearTimer = Timer::create(2.f);
+    hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+
+        puangEnding->show();
+        puangGoing->start();
+        return true;
+    });
+
+    puangGoing->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        gymManGoOut->start();
+        
+
+        return true;
+    });
+
+    gymManGoOut->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        if (gymManGoOutX < 900) {
+            if (gymManGoOutX == 700) {
+                timer->set(2.f);
+                messageBox->show();
 
 
+                gymMan->setImage("Images/Stage/Æ®·¹ÀÌ³Ê_¿ò.png");
+            }
+            else 
+                timer->set(0.1f);
+            gymManGoOutX += 10;
+            gymMan->locate(roomLeftScene, gymManGoOutX, 150);
+            messageBox->locate(roomLeftScene, gymManGoOutX+200, 500);
+            timer->start();
+        }
+        else {
+
+            gymManGoOutBefore->start();
+        }
+
+
+        return true;
+    });
+
+
+    gymManGoOutBefore->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        gymMan->hide();
+        whiteDoor->setImage("Images/Stage/doorClose.png");
+        messageBox->hide();
+        whiteDoor->locate(roomLeftScene, 880, 175);
+        gymManGoOutAfter->start();
+        return true;
+    });
+
+    gymManGoOutAfter->setOnTimerCallback([&](TimerPtr timer)-> bool {
+        //stage ++ 
+        // game clear
+        // menu Btn ?
+        // go next game ? 
+
+        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+        gameClearScene->enter();
+        // ¼ýÀÚ Ãß°¡ 
+        // 1ÅºÀ» °è¼Ó ±ú¸é 2,3,ÅºÀÌ±úÁö´Â¹®Á¦ ¹ß»ý 
+        if (root->getCurrentStage() == root->getClickedStage())
+            root->setCurrentStage(root->getCurrentStage() + 1);
+
+        gameClearTimer->start();
+
+        return true;
+    });
+
+
+    gameClearTimer->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        root->getStageSelectScene()->enter();
+
+        root->stageSelectComponent->update();
+
+        return true;
+    });
 
 } 

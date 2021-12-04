@@ -20,6 +20,8 @@ protected:
     ScenePtr mainMenuScene;
     ObjectPtr startBtn;
     ObjectPtr gameInfoBtn;
+    ObjectPtr gameInfo; 
+    ObjectPtr gameInfoOutBtn;
     // MainMenuData  --------------------------------------------------------------------------------------------------  
 
 
@@ -81,11 +83,16 @@ public:
     void setMainMenuScene(ScenePtr s) { mainMenuScene = s; };
     void setMainMenuStartBtn(ObjectPtr o) { startBtn = o; };
     void setGameInfoBtn(ObjectPtr o) { gameInfoBtn = o; };
+    void setGameInfoOutBtn(ObjectPtr o) { gameInfoOutBtn = o; };
+    void setGameInfo(ObjectPtr o) { gameInfo = o; };
 
     // getter 
     ScenePtr getMainMenuScene() { return mainMenuScene; };
     ObjectPtr getMainMenuStartBtn() { return startBtn; };
     ObjectPtr getGameInfoBtn() { return gameInfoBtn; };
+    ObjectPtr getGameInfoOutBtn() { return gameInfoOutBtn; };
+    ObjectPtr getGameInfo() { return gameInfo; };
+
 
     // reset  //void resetMainMenu() { mainMenuScene = Scene::create("MainMenuScene", "Images/Background/startScene.png"); }; // 초기화 & 리셋 함수
 
@@ -123,7 +130,7 @@ public:
 
 
     // 추후 인트로로 시작되게 변경해줘야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    void start() { startGame(stageSelectScene); };
+    void start() { startGame(introScene); };
     // 객체가 생성될때 변수 초기화 및 초기 셋팅등 생성자 역할을 하게 된다.
     void enter() {};
 

@@ -151,18 +151,22 @@ public:
     bool starBoxStatus[5];
     bool gymManDead;
     int burgerY;
-    
-
     ObjectPtr puangBat;
     ObjectPtr puangBatTemp;
-
     TimerPtr puangBatHit;
     TimerPtr puangBatHitAfter;
-
     TimerPtr burgerComingDown;
-
     ObjectPtr bulga;
 
+    // stage10
+    ObjectPtr puangEnding;
+    ObjectPtr whiteDoor;
+    ObjectPtr messageBox;
+    TimerPtr puangGoing;
+    TimerPtr gymManGoOut;
+    TimerPtr gymManGoOutBefore;
+    TimerPtr gymManGoOutAfter;
+    int gymManGoOutX;
 
 
 

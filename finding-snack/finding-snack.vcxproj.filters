@@ -506,6 +506,27 @@
     <Image Include="Images\Stage\빙글2.PNG">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Images\Stage\bigFishEating.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\트레이너_삐짐.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\트레이너_움.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\숨길데없근육.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\숨길데없근육2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\explain1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\closeBtn.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\FindingSnack\FindingSnackObject\FindingSnackObject.h">

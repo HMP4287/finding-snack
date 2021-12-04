@@ -187,6 +187,7 @@
     <Image Include="Images\Stage\ballonSmall.png" />
     <Image Include="Images\Stage\batR.png" />
     <Image Include="Images\Stage\bat.png" />
+    <Image Include="Images\Stage\bigFishEating.png" />
     <Image Include="Images\Stage\bigFishOpenV.png" />
     <Image Include="Images\Stage\bigFishStand.png" />
     <Image Include="Images\Stage\bird.png" />
@@ -206,6 +207,7 @@
     <Image Include="Images\Stage\car.png" />
     <Image Include="Images\Stage\chicken.png" />
     <Image Include="Images\Stage\clearBackground.PNG" />
+    <Image Include="Images\Stage\closeBtn.PNG" />
     <Image Include="Images\Stage\closetClose.png" />
     <Image Include="Images\Stage\closetLock.png" />
     <Image Include="Images\Stage\closetOpen.png" />
@@ -222,6 +224,7 @@
     <Image Include="Images\Stage\drawerOpen.png" />
     <Image Include="Images\Stage\elephant.png" />
     <Image Include="Images\Stage\emptyStar.png" />
+    <Image Include="Images\Stage\explain1.PNG" />
     <Image Include="Images\Stage\fish.png" />
     <Image Include="Images\Stage\fullStar.png" />
     <Image Include="Images\Stage\gameOverScene.PNG" />
@@ -294,6 +297,10 @@
     <Image Include="Images\Stage\빙글1.PNG" />
     <Image Include="Images\Stage\빙글2.PNG" />
     <Image Include="Images\Stage\수직bat.png" />
+    <Image Include="Images\Stage\숨길데없근육.PNG" />
+    <Image Include="Images\Stage\숨길데없근육2.PNG" />
+    <Image Include="Images\Stage\트레이너_삐짐.png" />
+    <Image Include="Images\Stage\트레이너_움.png" />
     <Image Include="Images\Stage\푸앙_사랑.png" />
     <Image Include="Images\Stage\푸앙_운동.png" />
     <Image Include="Images\Stage\푸앙_운동2.png" />
