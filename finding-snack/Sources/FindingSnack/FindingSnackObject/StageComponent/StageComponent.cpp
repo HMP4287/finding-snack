@@ -10,6 +10,7 @@ StageComponent::~StageComponent() {};
 
 // 객체가 생성될때 변수 초기화 및 초기 셋팅등 생성자 역할을 하게 된다.
 void StageComponent::enter() {
+    resetObject();
     resetBag();
     // default 요소 초기화 
     char temp[45];
@@ -43,6 +44,17 @@ void StageComponent::enter() {
     stageRestartBtnR = Object::create("Images/Button/restartBtn.png", roomRightScene, 10, 630);
     goBackMainMenuBtnR = Object::create("Images/Button/home.png", roomRightScene, 110, 630);
  
+    goRightRoomBtnFake = Object::create("Images/Stage/goRight.PNG", roomLeftScene, 1160, 30);
+    goLeftRoomBtnFake = Object::create("Images/Stage/goLeft.PNG", roomRightScene, 30, 30);
+    stageRestartBtnLFake = Object::create("Images/Button/restartBtn.png", roomLeftScene, 10, 630);
+    goBackMainMenuBtnLFake = Object::create("Images/Button/home.png", roomLeftScene, 110, 630);
+    stageRestartBtnRFake = Object::create("Images/Button/restartBtn.png", roomRightScene, 10, 630);
+    goBackMainMenuBtnRFake = Object::create("Images/Button/home.png", roomRightScene, 110, 630);
+    goRightRoomBtnFake->setScale(0.7);
+    goLeftRoomBtn->setScale(0.7);
+    hideFake();
+
+
     event();
 
     makeStage(root->getClickedStage());
@@ -54,6 +66,25 @@ void StageComponent::enter() {
 
 
 };
+void StageComponent::showFake() {
+    goRightRoomBtnFake->show();
+    goLeftRoomBtnFake->show();
+    stageRestartBtnLFake->show();
+    goBackMainMenuBtnLFake->show();
+    stageRestartBtnRFake->show();
+    goBackMainMenuBtnRFake->show();
+
+
+};
+
+void StageComponent::hideFake() {
+    goRightRoomBtnFake->hide();
+    goLeftRoomBtnFake->hide();
+    stageRestartBtnLFake->hide();
+    goBackMainMenuBtnLFake->hide();
+    stageRestartBtnRFake->hide();
+    goBackMainMenuBtnRFake->hide();
+}; 
 
 // 객체가 삭제/제거될때 메모리 삭제 등 소멸자 역할을 하게 된다.
 void StageComponent::exit() {};
@@ -88,27 +119,35 @@ void StageComponent::event() {
     stageRestartBtnL->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // 초기화가 되었을지 ? 그리고 이 클래스의 엔터가 실행될지 ? 
 
+        resetBag();
+        resetObject();
         enter();
         root->getStage()->enter();
         return true;
     });
     stageRestartBtnR->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // 초기화가 되었을지 ? 그리고 이 클래스의 엔터가 실행될지 ? 
+        resetBag();
+        resetObject();
         enter();
         root->getStage()->enter();
         return true;
     });
     goBackMainMenuBtnL->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // 초기화가 되었을지 ? 그리고 이 클래스의 엔터가 실행될지 ? 
-        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
         resetBag();
+        resetObject();
+        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+        //resetBag();
         root->getMainMenuScene()->enter();
         return true;
     });
     goBackMainMenuBtnR->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // 초기화가 되었을지 ? 그리고 이 클래스의 엔터가 실행될지 ? 
-        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
         resetBag();
+        resetObject();
+        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+        //resetBag();
         root->getMainMenuScene()->enter();
         return true;
     });
@@ -950,6 +989,7 @@ void StageComponent::makeStage4() {
     paint = Object::create("Images/Stage/spraySpin.png", roomRightScene, 550, 175);
     paint->hide();
 
+    hamburgerCanClick = false;
     puangComePaint = Timer::create(1.f);
     carManComming = Timer::create(1.f);
     carManInside = Timer::create(1.f);
@@ -969,6 +1009,7 @@ void StageComponent::makeStage4() {
 
     sign->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         if (paint->isHanded()) {
+            showFake();
             // drop hide 안하고 시도 
             paint->drop();
             paint->hide();
@@ -1034,6 +1075,10 @@ void StageComponent::makeStage4() {
             car->locate(roomLeftScene, carX, 150);
             timer->start();
         }
+        else {
+            hamburgerCanClick = true;
+            hideFake();
+        }
         // 끝나면 차안에 넣기 
         
             //carManInside->start();
@@ -1044,15 +1089,18 @@ void StageComponent::makeStage4() {
 
 
     hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
-        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
-        resetBag();
-        gameClearScene->enter();
-        // 숫자 추가 
-        // 1탄을 계속 깨면 2,3,탄이깨지는문제 발생 
-        if (root->getCurrentStage() == root->getClickedStage())
-            root->setCurrentStage(root->getCurrentStage() + 1);
+        if (hamburgerCanClick) {
+            setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+            resetBag();
+            gameClearScene->enter();
+            // 숫자 추가 
+            // 1탄을 계속 깨면 2,3,탄이깨지는문제 발생 
+            if (root->getCurrentStage() == root->getClickedStage())
+                root->setCurrentStage(root->getCurrentStage() + 1);
 
-        gameClearTimer->start();
+            gameClearTimer->start();
+        }
+
         return true;
     });
     gameClearTimer->setOnTimerCallback([&](TimerPtr timer)->bool {
@@ -2775,3 +2823,170 @@ void StageComponent::makeStage10() {
     });
 
 } 
+
+void StageComponent::resetObject() {
+
+    // stage1
+    closet = NULL;
+
+    windowLeft = NULL;
+    windowRight = NULL;
+    wallCloset =
+        sofa = NULL;
+    sofaCushionLeft = NULL;
+    puangBitjaru = NULL;
+    gymMan = NULL;
+    plant = NULL;
+
+
+    drawer = NULL;
+    bitjaru = NULL;
+    bitjaruTemp = NULL;
+    burgerMoved = NULL;
+    burgerMovedTimer = NULL;
+    burgerMovedTimerAfter = NULL;
+
+    // stage3
+    bookshelf = NULL;
+    book1 = NULL;
+    book2 = NULL;
+    book3 = NULL;
+    bookTemp = NULL;
+    brokenChair = NULL;
+    brokenChairTemp = NULL;
+    stand = NULL;
+    puangJumping = NULL;
+    puangFallDown = NULL;
+    puangFallDownAfter = NULL;
+    puangLovingTimer = NULL;
+    burgerReach = NULL;
+    wallIsOpen = NULL;
+    // stage4
+    car = NULL;
+    sign = NULL;
+    paint = NULL;
+    paintTemp = NULL;
+    paintingPuang = NULL;
+    carMan = NULL;
+    puangComePaint = NULL;
+    carManComming = NULL;
+    carManX = NULL;
+    carManInside = NULL;
+    carOut = NULL;
+    carX = NULL;
+
+    // stage5
+    elephant = NULL;
+    ballon = NULL;
+    ballonGettingBig = NULL;
+    gymManGymingFast = NULL;
+    elephantBallonGetBig = NULL;
+    weight = NULL;
+    weightTemp = NULL;
+    cntTwo = NULL;
+    ballonScale = NULL;
+    ballonX = NULL;
+    ballonY = NULL;
+    gymManDStatus = NULL;
+    gymManSpeed = NULL;
+    gymManY = NULL;
+
+    // stage6
+    bottle = NULL;
+    windowStatus = NULL;
+    key = NULL;
+    cloud = NULL;
+    keySpinTimer = NULL;
+    gymManSpinTimer = NULL;
+    gymManSpin = NULL;
+    gymStatus = NULL;
+    keySpin = NULL;
+    keyStatus = NULL;
+    closetUnlocked = NULL;
+
+    // stage7
+    refrigeratorUp = NULL;
+    refrigeratorDown = NULL;
+    watermelon = NULL;
+    watermelonDesk = NULL;
+    puangHittingStatus = NULL;
+    hitCnt = NULL;
+    desk = NULL;
+    puangHitting = NULL;
+
+    // stage8
+    fish = NULL;
+    puangGivingFish = NULL;
+    fishTemp = NULL;
+    chicken = NULL;
+    bigFish = NULL;
+    dish = NULL;
+    gymManFood = NULL;
+    fly = NULL;
+    flyLeft = NULL;
+    comeBigFishX = NULL;
+    givingFish = NULL;
+    comeBigFish = NULL;
+    eatingFish = NULL;
+    hamburgerCanClick = NULL;
+
+    //stage 9
+    sofaCushion = NULL;
+    bat1 = NULL;
+    bat2 = NULL;
+    bottle1 = NULL;
+    bottle2 = NULL;
+    gymManTurn = NULL;
+    batTemp = NULL;
+    gymManBang = NULL;
+    gymManTurnStatus = NULL;
+    gymManTurnCnt = NULL;
+
+    star1 = NULL; //window
+    star2 = NULL; //bingle
+    star3 = NULL; //bangsuk
+    star4 = NULL; //mainmenu
+    star5 = NULL; //bulga
+    starBox1 = NULL;
+    starBox2 = NULL;
+    starBox3 = NULL;
+    starBox4 = NULL;
+    starBox5 = NULL;
+    starMainMenu = NULL;
+    clearStarCnt = NULL;
+    //starBoxStatus[5];
+    gymManDead = NULL;
+    burgerY = NULL;
+    puangBat = NULL;
+    puangBatTemp = NULL;
+    puangBatHit = NULL;
+    puangBatHitAfter = NULL;
+    burgerComingDown = NULL;
+    bulga = NULL;
+
+    puangEnding = NULL;
+    whiteDoor = NULL;
+    messageBox = NULL;
+    puangGoing = NULL;
+    gymManGoOut = NULL;
+    gymManGoOutBefore = NULL;
+    gymManGoOutAfter = NULL;
+    gymManGoOutX = NULL;
+
+
+    hamburger = NULL;
+    gameClearScene = NULL;
+    gameClearTimer = NULL;
+    puangFail = NULL;
+    gameOverScene = NULL;
+    puangFailMoving = NULL;
+    puangCrying = NULL;
+    puangWeightCnt = NULL;
+    gameOverPuangWeightUp = NULL;
+    gameOverPuangWeightDown = NULL;
+    facedGameOver = NULL;
+
+}
+
+
+
