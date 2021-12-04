@@ -19,6 +19,15 @@ public:
     ObjectPtr stageRestartBtnR;
     ObjectPtr goBackMainMenuBtnR;
 
+    // fake btns
+    ObjectPtr goRightRoomBtnFake;
+    ObjectPtr goLeftRoomBtnFake;
+    ObjectPtr stageRestartBtnLFake;
+    ObjectPtr goBackMainMenuBtnLFake;
+    ObjectPtr stageRestartBtnRFake;
+    ObjectPtr goBackMainMenuBtnRFake;
+
+
     // stage1 
     ObjectPtr closet;
     ObjectPtr windowLeft;
@@ -186,6 +195,7 @@ public:
     TimerPtr facedGameOver; 
 
 
+
     
 
     StageComponent(FindingSnackObject* r);
@@ -211,6 +221,8 @@ public:
     void construct();
 
     void resetBag();
+    void showFake();
+    void hideFake();
 
     void makeStage(int stageNum);
 
@@ -225,5 +237,6 @@ public:
     void makeStage8(); 
     void makeStage9();
     void makeStage10();
+    void resetObject();
 };
 
