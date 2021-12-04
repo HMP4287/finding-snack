@@ -18,6 +18,11 @@ void MainMenuComponent::enter() {
     // gameInfoBtn 초기화 
     root->setGameInfoBtn(Object::create("Images/Button/explain.png", root->getMainMenuScene(), 560, 60));
 
+    root->setGameInfo(Object::create("Images/Stage/explain1.PNG", root->getMainMenuScene(), 280, 55));
+    root->setGameInfoOutBtn(Object::create("Images/Stage/closeBtn.PNG", root->getMainMenuScene(), 575, 65));
+    root->getGameInfo()->hide();
+    root->getGameInfoOutBtn()->hide();
+
 
     // 게임옵션은 Stage진입 시 재 등장 
     setGameOption(GameOption::GAME_OPTION_ROOM_TITLE, false);
@@ -54,6 +59,15 @@ void MainMenuComponent::event() {
 
     root->getGameInfoBtn()->setOnMouseCallback([&](auto, auto, auto, auto)->bool {
 
+        root->getGameInfo()->show();
+        root->getGameInfoOutBtn()->show();
+
+        return true;
+    });
+    root->getGameInfoOutBtn()->setOnMouseCallback([&](auto, auto, auto, auto)->bool {
+        
+        root->getGameInfo()->hide();
+        root->getGameInfoOutBtn()->hide();
         return true;
     });
 

@@ -428,6 +428,105 @@
     <Image Include="Images\Puang\푸앙_자르기2.PNG">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Images\Stage\plate.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\fish.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\chicken.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bird.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\angrybird.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bigFishStand.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bigFishOpenV.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerD1.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerD2.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerDF.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\elephant.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\ballonSmall.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\weight.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bat.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\nightWindow.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\fullStar.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\emptyStar.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bulga.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\batR.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\starcircle.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerBang3.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerBang1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerBang2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\수직bat.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\빙글1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\빙글2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bigFishEating.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\트레이너_삐짐.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\트레이너_움.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\숨길데없근육.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\숨길데없근육2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\explain1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\closeBtn.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\FindingSnack\FindingSnackObject\FindingSnackObject.h">

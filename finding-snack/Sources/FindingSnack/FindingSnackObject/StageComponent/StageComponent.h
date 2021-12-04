@@ -7,32 +7,26 @@ class StageComponent : public FindingSnackObject
 public:
     FindingSnackObject* root;
 
-    // Stage elements
-    // 스테이지 진입시 제일 처음화면 room == stageScene
+    // Default Stage elements
     ScenePtr showStageScene; 
     TimerPtr showStageTimer;
-
     ScenePtr roomLeftScene;
     ScenePtr roomRightScene;
-
     ObjectPtr goRightRoomBtn;
     ObjectPtr goLeftRoomBtn;
-
-    // Default btn 
     ObjectPtr stageRestartBtnL;
     ObjectPtr goBackMainMenuBtnL;
     ObjectPtr stageRestartBtnR;
     ObjectPtr goBackMainMenuBtnR;
 
-
+    // stage1 
     ObjectPtr closet;
     ObjectPtr windowLeft;
     ObjectPtr windowRight; 
-    ObjectPtr wallCloset; // 대각선 
-    ObjectPtr sofa; // 대각선 
+    ObjectPtr wallCloset; 
+    ObjectPtr sofa;  
     ObjectPtr sofaCushionLeft;
     ObjectPtr sofaCushionRight;
-
 
     // stage2
     ObjectPtr puangBitjaru;
@@ -76,6 +70,20 @@ public:
     int carX;
     
     // stage5
+    ObjectPtr elephant;
+    ObjectPtr ballon;
+    ObjectPtr ballonGettingBig;
+    TimerPtr gymManGymingFast;
+    TimerPtr elephantBallonGetBig;
+    ObjectPtr weight;
+    ObjectPtr weightTemp; 
+    int cntTwo; 
+    double ballonScale;
+    int ballonX;
+    int ballonY;
+    int gymManDStatus;
+    int gymManSpeed; 
+    int gymManY;
 
     // stage6
     ObjectPtr bottle;
@@ -100,7 +108,65 @@ public:
     ObjectPtr desk;
     ObjectPtr puangHitting;
     
+    // stage8
+    ObjectPtr fish; 
+    ObjectPtr puangGivingFish;
+    ObjectPtr fishTemp; 
+    ObjectPtr chicken;
+    ObjectPtr bigFish;
+    ObjectPtr dish; 
+    ObjectPtr gymManFood;
+    ObjectPtr fly; 
+    ObjectPtr flyLeft;
+    int comeBigFishX;
+    TimerPtr givingFish;
+    TimerPtr comeBigFish;
+    TimerPtr eatingFish;
+    bool hamburgerCanClick;
 
+    //stage 9   
+    ObjectPtr sofaCushion;
+    ObjectPtr bat1; 
+    ObjectPtr bat2;
+    ObjectPtr bottle1;
+    ObjectPtr bottle2;
+    ObjectPtr gymManTurn;
+    ObjectPtr batTemp;
+    ObjectPtr gymManBang;
+    int gymManTurnStatus;
+    int gymManTurnCnt;
+
+    ObjectPtr star1; //window
+    ObjectPtr star2; //bingle
+    ObjectPtr star3; //bangsuk
+    ObjectPtr star4; //mainmenu
+    ObjectPtr star5; //bulga
+    ObjectPtr starBox1;
+    ObjectPtr starBox2;
+    ObjectPtr starBox3;
+    ObjectPtr starBox4;
+    ObjectPtr starBox5;
+    ObjectPtr starMainMenu;
+    int clearStarCnt;
+    bool starBoxStatus[5];
+    bool gymManDead;
+    int burgerY;
+    ObjectPtr puangBat;
+    ObjectPtr puangBatTemp;
+    TimerPtr puangBatHit;
+    TimerPtr puangBatHitAfter;
+    TimerPtr burgerComingDown;
+    ObjectPtr bulga;
+
+    // stage10
+    ObjectPtr puangEnding;
+    ObjectPtr whiteDoor;
+    ObjectPtr messageBox;
+    TimerPtr puangGoing;
+    TimerPtr gymManGoOut;
+    TimerPtr gymManGoOutBefore;
+    TimerPtr gymManGoOutAfter;
+    int gymManGoOutX;
 
 
 
@@ -111,16 +177,12 @@ public:
 
     // 실패 애니메이션 
     ObjectPtr puangFail;
-    
     ScenePtr gameOverScene;
-
-    // puang should gym 
     TimerPtr puangFailMoving;
     TimerPtr puangCrying;
     int puangWeightCnt;
     TimerPtr gameOverPuangWeightUp;
     TimerPtr gameOverPuangWeightDown;
-
     TimerPtr facedGameOver; 
 
 
@@ -148,13 +210,6 @@ public:
     // 만들어 놓은 함수들을 가지고 로직 수행
     void construct();
 
-    // resetBag()호출이 필요한 위치들 
-    // stage들어갈때, 
-    // stage에서 나올때 
-    // - restart
-    // - home
-    // - fail
-    // - success
     void resetBag();
 
     void makeStage(int stageNum);
@@ -164,8 +219,11 @@ public:
     void makeStage2();
     void makeStage3();
     void makeStage4();
-    void makeStage5();
+    void makeStage5(); // 미완성 
     void makeStage6();
     void makeStage7();
+    void makeStage8(); 
+    void makeStage9();
+    void makeStage10();
 };
 

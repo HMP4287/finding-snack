@@ -146,7 +146,44 @@ void StageComponent::resetBag() {
         watermelon->drop();
         watermelon->hide();
     }
+    if (fish) {
+        fish->drop();
+        fish->hide();
+    }
+    if (ballon) {
+        ballon->drop();
+        ballon->hide();
+    }
+    if (star1) {
+        star1->drop();
+        star1->hide();
+    }
+    if (star2) {
+        star2->drop();
+        star2->hide();
+    }
+    if (star3) {
+        star3->drop();
+        star3->hide();
+    }
 
+    if (star4) {
+        star4->drop();
+        star4->hide();
+    }
+
+    if (star5) {
+        star5->drop();
+        star5->hide();
+    }
+    if (bat1) {
+        bat1->drop();
+        bat1->hide();
+    }
+    if (bat2) {
+        bat2->drop();
+        bat2->hide();
+    }
 }
 
 
@@ -170,6 +207,12 @@ void StageComponent::makeStage(int stageNum) {
         makeStage6();
     else if (stageNum == 7)
         makeStage7();
+    else if (stageNum == 8)
+        makeStage8();
+    else if (stageNum == 9)
+        makeStage9();
+    else if (stageNum == 10)
+        makeStage10();
 
 }
 
@@ -1024,6 +1067,172 @@ void StageComponent::makeStage4() {
 
 
 void StageComponent::makeStage5() { 
+
+    // ¿ÞÂÊ Àå¸é 
+    // ÇïÃ¢ ¿îµ¿ÁßÀÓ 
+    weightTemp = Object::create("Images/Stage/weight.png", roomLeftScene, 320, 90);
+    weightTemp->hide();
+    // ÄÚ³¢¸®
+    hamburger = Object::create("Images/Stage/hamburger.png", roomLeftScene, 320, 150);
+    gymMan = Object::create("Images/Stage/trainerD1.png", roomLeftScene, 250, 50);
+    elephant = Object::create("Images/Stage/elephant.png", roomLeftScene, 700, 150);
+    elephant->setScale(0.3f);
+    gymManY = 50;
+    gymManDStatus = 0; 
+    gymManSpeed = 0;
+    //gymManGyming->start();
+    elephantBallonGetBig = Timer::create(2.f);
+    ballonScale = 0.2f; 
+    ballonX = 670; 
+    ballonY = 180;
+    weight = Object::create("Images/Stage/weight.png", roomLeftScene, 600, 50);
+    weight->hide();
+    gameClearScene = Scene::create("gameClearScene", "Images/Stage/clearBackground.PNG");
+    gameClearTimer = Timer::create(2.f);
+    gymManGymingFast = Timer::create(1.f);
+
+
+    hamburgerCanClick = false;
+
+    // ¿À¸¥ 
+    // ¼­¶ø 
+    // Ç³¼± 
+    drawer = Object::create("Images/Stage/drawerClose.png", roomRightScene, 550, 75);
+    ballon = Object::create("Images/Stage/ballonSmall.png", roomRightScene, 550, 175);
+    
+    ballon->hide();
+    hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)-> bool {
+        //stage ++ 
+        // game clear
+        // menu Btn ?
+        // go next game ?
+        if (hamburgerCanClick) {
+            setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+            gameClearScene->enter();
+            // ¼ýÀÚ Ãß°¡ 
+            // 1ÅºÀ» °è¼Ó ±ú¸é 2,3,ÅºÀÌ±úÁö´Â¹®Á¦ ¹ß»ý 
+            if (root->getCurrentStage() == root->getClickedStage())
+                root->setCurrentStage(root->getCurrentStage() + 1);
+
+            gameClearTimer->start();
+        }
+
+
+        return true;
+    });
+    gameClearTimer->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        root->getStageSelectScene()->enter();
+
+        root->stageSelectComponent->update();
+
+        return true;
+    });
+
+
+    drawer->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        drawer->setImage("Images/Stage/drawerOpen.png");
+        ballon->show();
+        drawer->locate(roomRightScene, 455, 40);
+        return true;
+    });
+    ballon->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        ballon->pick();
+        //gymUpSlow->start();
+        //gymManGyming->start();
+        return true;
+    });
+
+    gymMan->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        if (weight->isHanded()) {
+            weight->drop();
+            weight->hide(); 
+            weightTemp->show();
+
+            //gymManGyming->start();
+            gymManGymingFast->start();
+        }
+        return true;
+    });
+    
+    cntTwo = 0;
+    gymManGymingFast->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+
+        
+        if (gymManY < 700) {
+            if (cntTwo < 2) {
+                if (gymManDStatus == 0) {
+                    timer->set(0.025f);
+                    gymMan->setImage("Images/Stage/trainerD1.png");
+                    gymMan->locate(roomLeftScene, 250, gymManY);
+                    gymManDStatus = 1;
+
+                }
+                else if (gymManDStatus == 1) {
+                    //timer->stop();
+                    timer->set(0.025f);
+                    gymMan->setImage("Images/Stage/trainerD2.png");
+                    gymMan->locate(roomLeftScene, 200, gymManY);
+                    gymManDStatus = 0;
+                }
+                cntTwo++;
+            }
+            else {
+                cntTwo = 0; 
+                gymManY += 20;
+                timer->set(0.1f);
+        
+            }
+            timer->start();
+
+        }
+        else {
+            hamburgerCanClick = true;
+            gymMan->hide();
+        }
+        return true;
+    });
+
+    elephant->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        if (ballon->isHanded()) {
+            ballon->drop();
+            ballon->hide();
+            ballonGettingBig = Object::create("Images/Stage/ballon.png", roomLeftScene, ballonX, ballonY);
+            ballonGettingBig->setScale(ballonScale); 
+            elephantBallonGetBig->start();
+        }
+        return true;
+    });
+
+    elephantBallonGetBig->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        
+        if (ballonScale < 2) {
+            timer->set(2.f);
+            ballonScale += 0.2;
+            ballonGettingBig->setScale(ballonScale);
+            ballonX -= 35;
+            ballonY -= 10;
+            ballonGettingBig->locate(roomLeftScene, ballonX, ballonY);
+            timer->start();
+        }
+
+        else {
+            
+            ballonGettingBig->hide();
+            weight->show(); 
+        }
+
+
+        return true;
+    });
+    weight->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        weight->pick();
+        return true;
+    });
+
+
 }
 
 void StageComponent::makeStage6() {
@@ -1487,3 +1696,1082 @@ void StageComponent::makeStage7() {
     });
 
 }
+
+void StageComponent::makeStage8() {
+    // fish 
+    comeBigFish = Timer::create(0.1f);
+    comeBigFishX = 700;
+    eatingFish = Timer::create(2.f);
+
+    givingFish = Timer::create(1.f);
+    // ¼º°ø¿ä¼Ò 
+    gameClearScene = Scene::create("gameClearScene", "Images/Stage/clearBackground.PNG");
+    gameClearTimer = Timer::create(2.f);
+    // 
+    // 
+    // ¿ÞÂÊÈ­¸é 
+    // ³ÃÀå°í 
+    // »ý¼±
+    // ´ß°¡½¿»ì?
+    // ±×¸©¿¡´Ù ÁÖ¸é ¤·¤» 
+    // Á÷Á¢ÁÖ¸é ÇïÃ¢ µîÀå 
+    hamburger = Object::create("Images/Stage/hamburger.png", roomLeftScene, 950, 150);
+    hamburgerCanClick = false;
+    
+    refrigeratorUp = Object::create("Images/Stage/rUC.png", roomLeftScene, 250, 400);
+    refrigeratorDown = Object::create("Images/Stage/rDC.png", roomLeftScene, 250, 150);
+    
+    dish = Object::create("Images/Stage/plate.png", roomLeftScene, 100, 50);
+    dish->hide();
+
+    fish = Object::create("Images/Stage/fish.png", roomLeftScene, 310, 280);
+    fish->hide();
+    chicken = Object::create("Images/Stage/chicken.png", roomLeftScene, 310, 180);
+    chicken->hide();
+
+    fly = Object::create("Images/Stage/paris.png", roomRightScene, 250, 250);
+    fly->setScale(7.f);
+    
+    flyLeft = Object::create("Images/Stage/paris.png", roomLeftScene, 100, 50);
+
+    //fly->setScale(5.f);
+
+    
+    bigFish = Object::create("Images/Stage/bigFishStand.png", roomLeftScene, 700, 50);
+    bigFish->setScale(0.6f);
+    gameOverScene = Scene::create("gameOverScene", "Images/Stage/gameOverScene.PNG");
+    facedGameOver = Timer::create(1.f); // ±×³É ½ÇÆÐ ÀýÂ÷Áß ÇÏ³ªÀÓ 
+    puangFailMoving = Timer::create(1.f);
+    puangCrying = Timer::create(1.f);
+    gameOverPuangWeightUp = Timer::create(1.f);
+    gameOverPuangWeightDown = Timer::create(1.f);
+    puangWeightCnt = 0;
+    puangFail = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 100, 50);
+    puangFail->hide();
+    refrigeratorUp->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        refrigeratorUp->setImage("Images/Stage/rUO.png");
+        return true;
+    });
+    flyLeft->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        flyLeft->hide();
+        dish->show();
+        return true;
+    });
+    fly->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        fly->hide();
+        return true;
+    });
+
+
+    refrigeratorDown->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        refrigeratorDown->setImage("Images/Stage/rDO.png");
+        fish->show();
+        chicken->show();
+        return true;
+    });
+
+    fish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        fish->pick();
+        return true;
+    });
+
+    // ½ÇÆÐ Á¶°Ç 
+    chicken->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        //chicken->hide();
+        puangFail->show();
+
+        puangFailMoving->start();
+        // ½ÇÆÐ Á¶°Ç 
+        return true;
+    });
+
+
+    // ½ÇÆÐÁ¶°Ç Ãß°¡ÇÒ °Í 
+    puangFailMoving->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        bigFish->setImage("Images/Stage/bigFishOpenV.png");
+        bigFish->setScale(0.6f);
+        puangCrying->start();
+        return true;
+    });
+
+    puangCrying->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        puangFail->setImage("Images/Puang/Çª¾Ó_Àý±Ô.png");
+        if (fishTemp) {
+            fishTemp->hide();
+        }
+
+        facedGameOver->start();
+        return true;
+    });
+
+    facedGameOver->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        
+        //root->getStageSelectScene()->enter();
+        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+
+        resetBag();
+        gameOverScene->enter();
+        puangFail->show();
+        puangFail->setImage("Images/Stage/Çª¾Ó_¿îµ¿.png");
+        puangFail->locate(gameOverScene, 350, 50);
+        gameOverPuangWeightDown->start();
+
+        //puangFail->setImage("Images/Stage/Çª¾Ó_¿îµ¿.png");
+        //puangFail->locate(gameOverScene, 250, 250);
+        // ½ÇÆÐÇÏ´Â ¸ð¼Çµé 
+        // ÀÎº¥Åä¸® ¹Ú½º »èÁ¦ ÇÊ¿ä, 
+        return true;
+    });
+    gameOverPuangWeightUp->setOnTimerCallback([&](TimerPtr timer)->bool {
+        if (puangWeightCnt < 4) {
+            timer->stop();
+            timer->set(1.f);
+            puangFail->setImage("Images/Stage/Çª¾Ó_¿îµ¿.png");
+            gameOverPuangWeightDown->start();
+            puangWeightCnt++;
+        }
+        else {
+
+            root->getStageSelectScene()->enter();
+            
+        }
+
+        return true;
+    });
+    gameOverPuangWeightDown->setOnTimerCallback([&](TimerPtr timer)->bool {
+        if (puangWeightCnt < 4) {
+            timer->stop();
+            timer->set(1.f);
+            puangFail->setImage("Images/Stage/Çª¾Ó_¿îµ¿2.png");
+            //puangFail->locate(gameOverScene, 250, 250);
+            gameOverPuangWeightUp->start();
+            puangWeightCnt++;
+        }
+        else {
+            root->getStageSelectScene()->enter();
+        }
+
+
+        return true;
+    });
+
+    dish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        // ¸Ô´Â ¾Ö´Ï Ãß°¡ 
+        if (fish->isHanded()) {
+            fish->drop();
+            fish->hide();
+            // ±×¸©À§¿¡ »ý¼º 
+            // »õ Á¢±Ù // ¹ö°Å»ý±è 
+            // »õ ¸ÔÀ½ 
+            puangGivingFish = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 130, 50);
+            givingFish->start();
+        }
+        return true;
+    });
+    givingFish->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        puangGivingFish->hide();
+        fishTemp = Object::create("Images/Stage/fish.png", roomLeftScene, 120, 80);
+       
+        comeBigFish->start();
+
+        return true;
+    });
+    comeBigFish->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        if (comeBigFishX > 200) {
+            timer->set(0.1f);
+            comeBigFishX -= 10;
+            bigFish->locate(roomLeftScene, comeBigFishX, 50);
+            timer->start();
+        }
+        else {
+            fishTemp->hide();
+            bigFish->setImage("Images/Stage/bigFishEating.png");
+            eatingFish->start();
+
+        }
+
+        return true;
+    });
+    eatingFish->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        bigFish->setImage("Images/Stage/bigFishStand.png");
+        
+        hamburgerCanClick = true;
+
+
+        return true;
+    });
+
+    bigFish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        // ½ÇÆÐ Á¶°Ç2 
+        if (fish->isHanded()) {
+            puangFail->show();
+            puangFail->locate(roomLeftScene, 600, 150);
+            puangFail->setImage("Images/Puang/Çª¾Ó_µÞ_¼Õ.png");
+            fishTemp = Object::create("Images/Stage/fish.png", roomLeftScene, 750, 250);
+
+            puangFailMoving->start();
+             
+        }
+        return true;
+    });
+
+
+    hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)-> bool {
+        //stage ++ 
+        // game clear
+        // menu Btn ?
+        // go next game ? 
+        if (hamburgerCanClick) {
+            setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+            gameClearScene->enter();
+            // ¼ýÀÚ Ãß°¡ 
+            // 1ÅºÀ» °è¼Ó ±ú¸é 2,3,ÅºÀÌ±úÁö´Â¹®Á¦ ¹ß»ý 
+            if (root->getCurrentStage() == root->getClickedStage())
+                root->setCurrentStage(root->getCurrentStage() + 1);
+
+            gameClearTimer->start();
+        }
+
+
+        return true;
+    });
+    gameClearTimer->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        root->getStageSelectScene()->enter();
+
+        root->stageSelectComponent->update();
+
+        return true;
+    });
+
+
+
+        
+
+}
+
+void StageComponent::makeStage9() {
+    //¿ÞÂÊ¹æ: ¼ÒÆÄ, ¹Ù´Ú¿¡ ¹æ¼®, ¹æ¼® À§¿¡ Æ®·¹ÀÌ³Ê
+    //¿À¸¥ÂÊ¹æ: ¾ß±¸ºüµû, Ã¢¹®, È£¸®º´ µÎ°³
+    starBox1 = Object::create("Images/Stage/emptyStar.png", roomLeftScene, 200, 500);
+    starBox2 = Object::create("Images/Stage/emptyStar.png", roomLeftScene, 300, 500);
+    starBox3 = Object::create("Images/Stage/emptyStar.png", roomLeftScene, 400, 500);
+    starBox4 = Object::create("Images/Stage/emptyStar.png", roomLeftScene, 500, 500);
+    starBox5 = Object::create("Images/Stage/emptyStar.png", roomLeftScene, 600, 500);
+
+    sofa = Object::create("Images/Stage/sofaFront.png", roomLeftScene, 620, 150);
+    sofaCushion = Object::create("Images/Stage/cushion.png", roomLeftScene, 600, 50);
+    star3 = Object::create("Images/Stage/fullStar.png", roomLeftScene, 600, 50);
+    star3->hide();
+    gymMan = Object::create("Images/Trainer/trainer.png", roomLeftScene, 600, 80);
+    bat1 = Object::create("Images/Stage/bat.png", roomRightScene, 250, 250);
+    bat2 = Object::create("Images/Stage/bat.png", roomLeftScene, 250, 250);
+    bat2->hide();
+    
+    windowLeft = Object::create("Images/Stage/curtainSide.png", roomRightScene, 500, 330); // x = 177, (´ÝÇôÀÖÀ»¶§´Â °ãÄ¡°Ô º¸ÀÌ·Á¸é Á»´õ °¡±îÀÌ ) 
+    windowRight = Object::create("Images/Stage/curtainSide.png", roomRightScene, 635, 281); // -17
+    windowStatus = 0;
+    gymManDead = false;
+
+    bottle1 = Object::create("Images/Stage/bottle.png", roomRightScene, 600, 150);
+    bottle2 = Object::create("Images/Stage/bottle.png", roomRightScene, 700, 100);
+
+    bulga = Object::create("Images/Stage/bulga.png", roomRightScene, 600, 150);
+    bulga->hide();
+    star1 = Object::create("Images/Stage/fullStar.png", roomRightScene, 675, 410);
+    star1->hide();
+    star4 = Object::create("Images/Stage/fullStar.png", roomLeftScene, 210, 630);
+    star4->hide();
+
+
+    star5 = Object::create("Images/Stage/fullStar.png", roomRightScene, 600, 150);
+    star5->hide();
+
+    for (int i = 0; i < 5; i++) starBoxStatus[i] = false;
+
+    starMainMenu = Object::create("Images/Button/home.png", roomLeftScene, 110, 630);
+    clearStarCnt = 0;
+
+    puangBatHit = Timer::create(1.f);
+    puangBatHitAfter = Timer::create(1.f);
+    gameClearScene = Scene::create("gameClearScene", "Images/Stage/clearBackground.PNG");
+    gameClearTimer = Timer::create(2.f);
+    hamburger = Object::create("Images/Stage/hamburger.png", roomLeftScene, 600, 700);
+    hamburger->hide();
+    burgerY = 700;
+    burgerComingDown = Timer::create(0.5f);
+    hamburgerCanClick = false;
+    gameOverScene = Scene::create("gameOverScene", "Images/Stage/gameOverScene.PNG");
+    facedGameOver = Timer::create(1.f); // ±×³É ½ÇÆÐ ÀýÂ÷Áß ÇÏ³ªÀÓ 
+    puangFailMoving = Timer::create(1.f);
+    puangCrying = Timer::create(1.f);
+    gameOverPuangWeightUp = Timer::create(1.f);
+    gameOverPuangWeightDown = Timer::create(1.f);
+    puangWeightCnt = 0;
+    gymManTurnStatus = 0;
+    gymManTurnCnt = 0;
+    puangFail = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomRightScene, 400, 50);
+    puangFail->hide();
+    gymManTurn = Object::create("Images/Stage/ºù±Û1.PNG", roomLeftScene, 500, 220);
+    gymManTurn->setScale(1.5f);
+    gymManTurn->hide();
+    batTemp = Object::create("Images/Stage/¼öÁ÷bat.png", roomLeftScene, 650, 80);
+    batTemp->hide();
+    star2 = Object::create("Images/Stage/starcircle.PNG", roomLeftScene, 150, 10);
+    star2->hide();
+
+    burgerComingDown->setOnTimerCallback([&](TimerPtr timer)->bool {
+        hamburger->show();
+        timer->stop();
+        if (burgerY > 150) {
+            timer->set(0.5f);
+            burgerY -= 30;
+            hamburger->locate(roomLeftScene, 600, burgerY);
+            timer->start();
+
+        }
+        else {
+            hamburgerCanClick = true;
+            
+        }
+
+
+        return true;
+    });
+
+    gymMan->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+
+        if (bat1->isHanded() || bat2->isHanded()) {
+
+            gymMan->hide();
+            gymManTurn->show();
+            
+            batTemp->show(); 
+            bat1->drop();
+            bat1->hide();
+
+            
+        }
+        return true;
+    });
+    gymManTurn->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        if (gymManTurnCnt < 30) {
+            if (gymManTurnCnt == 2) {
+                showMessage("´õ »¡¸® µ¹·Á¾ß ÇØÇª¾Ó");
+            }
+            if (gymManTurnStatus == 0) {
+                gymManTurn->setImage("Images/Stage/ºù±Û2.PNG");
+                //gymManTurn->setScale(1.5f);
+                gymManTurnStatus = 1;
+
+            }
+
+            else {
+                gymManTurn->setImage("Images/Stage/ºù±Û1.PNG");
+                //gymManTurn->setScale(1.5f);
+                gymManTurnStatus = 0;
+
+            }
+            gymManTurnCnt++;
+        
+        }
+        else {
+            gymManTurn->hide();
+            star2->show();
+            gymManBang = Object::create("Images/Stage/trainerBang3.PNG", roomLeftScene, 100, 50);
+
+            gymManDead = true;
+        }
+        return true;
+    });
+
+    hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)-> bool {
+        //stage ++ 
+        // game clear
+        // menu Btn ?
+        // go next game ? 
+        if (hamburgerCanClick) {
+            setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+            gameClearScene->enter();
+            // ¼ýÀÚ Ãß°¡ 
+            // 1ÅºÀ» °è¼Ó ±ú¸é 2,3,ÅºÀÌ±úÁö´Â¹®Á¦ ¹ß»ý 
+            if (root->getCurrentStage() == root->getClickedStage())
+                root->setCurrentStage(root->getCurrentStage() + 1);
+
+            gameClearTimer->start();
+
+
+        }
+
+        return true;
+    });
+    gameClearTimer->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        root->getStageSelectScene()->enter();
+
+        root->stageSelectComponent->update();
+
+        return true;
+    });
+
+
+
+    starMainMenu->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        starMainMenu->hide();
+        star4->show();
+        return true;
+    });
+    sofaCushion->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        if (gymManDead) {
+            sofaCushion->locate(roomLeftScene, 400, 50);
+            star3->show();
+            batTemp->setImage("Images/Stage/bat.png");
+        }
+        return true;
+    });
+
+
+
+    // ½ÇÆÐ 
+    bulga->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        if (bat1->isHanded() || bat2->isHanded()) {
+            // ºÒ°¡»ç¸®Ä¡¿ì´ÂÀå¸é
+            // Çª¾Ó+ºüµû Á¢±Ù
+            // Çª¾Ó+ºüµû ¿ì·Î + ºÒ°¡»ç¸® ¿ì·Î 
+            //if (bat1) {
+            //    bat1->drop();
+            //    bat1->hide();
+            //}
+            //if (bat2) {
+            //    bat2->drop();
+            //    bat2->hide();
+            //}
+            puangBat = Object::create("Images/Puang/Çª¾Ó_µÞ_¼Õ.png", roomRightScene, 400, 50);
+            puangBatTemp = Object::create("Images/Stage/bat.png", roomRightScene, 500, 150);
+            puangBatHit->start();
+
+        }
+        // ½ÇÆÐ 
+        else {
+            puangFail->show();
+            puangFailMoving->start();
+        
+        }
+        return true;
+    });
+
+
+    // ½ÇÆÐÁ¶°Ç Ãß°¡ÇÒ °Í 
+    puangFailMoving->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        bulga->setScale(4.f);
+        puangCrying->start();
+        return true;
+    });
+
+    puangCrying->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        puangFail->setImage("Images/Puang/Çª¾Ó_Àý±Ô.png");
+
+        facedGameOver->start();
+        return true;
+    });
+
+    facedGameOver->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        
+        //root->getStageSelectScene()->enter();
+        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+
+        resetBag();
+        gameOverScene->enter();
+        puangFail->show();
+        puangFail->setImage("Images/Stage/Çª¾Ó_¿îµ¿.png");
+        puangFail->locate(gameOverScene, 350, 50);
+        gameOverPuangWeightDown->start();
+
+        //puangFail->setImage("Images/Stage/Çª¾Ó_¿îµ¿.png");
+        //puangFail->locate(gameOverScene, 250, 250);
+        // ½ÇÆÐÇÏ´Â ¸ð¼Çµé 
+        // ÀÎº¥Åä¸® ¹Ú½º »èÁ¦ ÇÊ¿ä, 
+        return true;
+    });
+    gameOverPuangWeightUp->setOnTimerCallback([&](TimerPtr timer)->bool {
+        if (puangWeightCnt < 4) {
+            timer->stop();
+            timer->set(1.f);
+            puangFail->setImage("Images/Stage/Çª¾Ó_¿îµ¿.png");
+            gameOverPuangWeightDown->start();
+            puangWeightCnt++;
+        }
+        else {
+
+            root->getStageSelectScene()->enter();
+            
+        }
+
+        return true;
+    });
+    gameOverPuangWeightDown->setOnTimerCallback([&](TimerPtr timer)->bool {
+        if (puangWeightCnt < 4) {
+            timer->stop();
+            timer->set(1.f);
+            puangFail->setImage("Images/Stage/Çª¾Ó_¿îµ¿2.png");
+            //puangFail->locate(gameOverScene, 250, 250);
+            gameOverPuangWeightUp->start();
+            puangWeightCnt++;
+        }
+        else {
+            root->getStageSelectScene()->enter();
+        }
+
+
+        return true;
+    });
+
+
+
+
+
+
+
+    puangBatHit->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        puangBatTemp->setImage("Images/Stage/batR.png");
+        puangBatTemp->locate(roomRightScene, 580, 150);
+        star5->show();
+        bulga->locate(roomRightScene, 700, 80);
+        puangBatHitAfter->start();
+
+
+        return true;
+    });
+    puangBatHitAfter->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        puangBatTemp->hide();
+        puangBat->hide();
+
+
+
+
+
+        return true;
+    });
+    bottle1->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        bottle1->setImage("Images/Stage/bottleBreak.png");
+        bulga->show();
+        return true;
+    });
+    bottle2->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        bottle2->setImage("Images/Stage/bottleBreak.png");
+        return true;
+    });
+    bat1->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        bat1->pick();
+        return true;
+    });
+    bat2->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        bat2->pick();
+        return true;
+    });
+
+    
+    windowLeft->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        windowLeft->setImage("Images/Stage/windowSLO.png");
+        return true;
+    });
+
+    windowRight->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+       
+        if (windowStatus == 0) {
+            windowRight->setImage("Images/Stage/windowSRO.png");
+            windowStatus = 1;
+        }
+        else if (windowStatus == 1) {
+            windowRight->setImage("Images/Stage/nightWindow.png");
+            star1->show();
+        }
+        return true;
+    });
+
+    star1->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        star1->pick();
+        return true;
+    });
+    star3->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        star3->pick();
+        return true;
+    });
+    star2->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        star2->setImage("Images/Stage/fullStar.png");
+        star2->pick();
+        
+        return true;
+    });
+    star4->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        star4->pick();
+        return true;
+    });
+    star5->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        star5->pick();
+        return true;
+    });
+
+    starBox1->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        if (starBoxStatus[0])
+            return true;
+        starBoxStatus[0] = true;
+        if (clearStarCnt < 5) {
+            if (star1->isHanded() || star2->isHanded() || star3->isHanded() || star4->isHanded() || star5->isHanded()) {
+                starBox1->setImage("Images/Stage/fullStar.png");
+
+                clearStarCnt++;
+            }
+
+            if (star1->isHanded()) {
+                star1->drop();
+                star1->hide();
+
+            }
+            if (star2->isHanded()) {
+                star2->drop();
+                star2->hide();
+            }
+            if (star3->isHanded()) {
+                star3->drop();
+                star3->hide();
+            }
+            if (star4->isHanded()) {
+                star4->drop();
+                star4->hide();
+            }
+            if (star5->isHanded()) {
+                star5->drop();
+                star5->hide();
+            }
+
+            if (clearStarCnt == 5) {
+                if (star1->isHanded() || star2->isHanded() || star3->isHanded() || star4->isHanded() || star5->isHanded()) {
+                    starBox1->setImage("Images/Stage/fullStar.png");
+
+                    clearStarCnt++;
+                }
+                if (star1->isHanded()) {
+                    star1->drop();
+                    star1->hide();
+
+                }
+                if (star2->isHanded()) {
+                    star2->drop();
+                    star2->hide();
+                }
+                if (star3->isHanded()) {
+                    star3->drop();
+                    star3->hide();
+                }
+                if (star4->isHanded()) {
+                    star4->drop();
+                    star4->hide();
+                }
+                if (star5->isHanded()) {
+                    star5->drop();
+                    star5->hide();
+                }
+
+
+
+                burgerComingDown->start();
+            }
+
+
+        }
+
+        return true;
+    });
+    starBox2->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        if (starBoxStatus[1])
+            return true;
+        starBoxStatus[1] = true;
+        if (clearStarCnt < 5) {
+
+            if (star1->isHanded() || star2->isHanded() || star3->isHanded() || star4->isHanded() || star5->isHanded()) {
+                starBox2->setImage("Images/Stage/fullStar.png");
+
+                clearStarCnt++;
+              }
+            if (star1->isHanded()) {
+                star1->drop();
+                star1->hide();
+          
+            }
+            if (star2->isHanded()) {
+                star2->drop();
+                star2->hide();
+              }
+            if (star3->isHanded()) {
+                star3->drop();
+                star3->hide();
+            }
+            if (star4->isHanded()) {
+                star4->drop();
+                star4->hide();
+              }
+            if (star5->isHanded()) {
+                star5->drop();
+                star5->hide();
+            }
+            if (clearStarCnt == 5) {
+                if (star1->isHanded() || star2->isHanded() || star3->isHanded() || star4->isHanded() || star5->isHanded()) {
+                    starBox2->setImage("Images/Stage/fullStar.png");
+
+                    clearStarCnt++;
+                }
+                if (star1->isHanded()) {
+                    star1->drop();
+                    star1->hide();
+
+                }
+                if (star2->isHanded()) {
+                    star2->drop();
+                    star2->hide();
+                }
+                if (star3->isHanded()) {
+                    star3->drop();
+                    star3->hide();
+                }
+                if (star4->isHanded()) {
+                    star4->drop();
+                    star4->hide();
+                }
+                if (star5->isHanded()) {
+                    star5->drop();
+                    star5->hide();
+                }
+
+                burgerComingDown->start();
+            }
+
+        }
+
+        return true;
+    });
+    starBox3->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        if (starBoxStatus[2])
+            return true;
+        starBoxStatus[2] = true;
+        if (clearStarCnt < 5) {
+            if (star1->isHanded() || star2->isHanded() || star3->isHanded() || star4->isHanded() || star5->isHanded()) {
+                starBox3->setImage("Images/Stage/fullStar.png");
+
+                clearStarCnt++;
+            }
+            if (star1->isHanded()) {
+                star1->drop();
+                star1->hide();
+
+            }
+            if (star2->isHanded()) {
+                star2->drop();
+                star2->hide();
+            }
+            if (star3->isHanded()) {
+                star3->drop();
+                star3->hide();
+            }
+            if (star4->isHanded()) {
+                star4->drop();
+                star4->hide();
+            }
+            if (star5->isHanded()) {
+                star5->drop();
+                star5->hide();
+            }
+            if (clearStarCnt == 5) {
+            
+                if (star1->isHanded() || star2->isHanded() || star3->isHanded() || star4->isHanded() || star5->isHanded()) {
+                    starBox3->setImage("Images/Stage/fullStar.png");
+
+                    clearStarCnt++;
+                }
+                if (star1->isHanded()) {
+                    star1->drop();
+                    star1->hide();
+
+                }
+                if (star2->isHanded()) {
+                    star2->drop();
+                    star2->hide();
+                }
+                if (star3->isHanded()) {
+                    star3->drop();
+                    star3->hide();
+                }
+                if (star4->isHanded()) {
+                    star4->drop();
+                    star4->hide();
+                }
+                if (star5->isHanded()) {
+                    star5->drop();
+                    star5->hide();
+                }
+
+                burgerComingDown->start();
+            }
+
+        }
+
+        return true;
+    });
+    starBox4->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        if (starBoxStatus[3])
+            return true;
+        starBoxStatus[3] = true;
+        if (clearStarCnt < 5) {
+            if (star1->isHanded() || star2->isHanded() || star3->isHanded() || star4->isHanded() || star5->isHanded()) {
+                starBox4->setImage("Images/Stage/fullStar.png");
+
+                clearStarCnt++;
+            }
+            if (star1->isHanded()) {
+                star1->drop();
+                star1->hide();
+
+            }
+            if (star2->isHanded()) {
+                star2->drop();
+                star2->hide();
+            }
+            if (star3->isHanded()) {
+                star3->drop();
+                star3->hide();
+            }
+            if (star4->isHanded()) {
+                star4->drop();
+                star4->hide();
+            }
+            if (star5->isHanded()) {
+                star5->drop();
+                star5->hide();
+            }
+            if (clearStarCnt == 5) {
+                if (star1->isHanded() || star2->isHanded() || star3->isHanded() || star4->isHanded() || star5->isHanded()) {
+                    starBox4->setImage("Images/Stage/fullStar.png");
+
+                    clearStarCnt++;
+                }
+                if (star1->isHanded()) {
+                    star1->drop();
+                    star1->hide();
+
+                }
+                if (star2->isHanded()) {
+                    star2->drop();
+                    star2->hide();
+                }
+                if (star3->isHanded()) {
+                    star3->drop();
+                    star3->hide();
+                }
+                if (star4->isHanded()) {
+                    star4->drop();
+                    star4->hide();
+                }
+                if (star5->isHanded()) {
+                    star5->drop();
+                    star5->hide();
+                }
+
+                burgerComingDown->start();
+            }
+
+        }
+
+        return true;
+    });
+    starBox5->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        if (starBoxStatus[4])
+            return true;
+        starBoxStatus[4] = true;
+        if (clearStarCnt < 5) {
+            if (star1->isHanded() || star2->isHanded() || star3->isHanded() || star4->isHanded() || star5->isHanded()) {
+                starBox5->setImage("Images/Stage/fullStar.png");
+
+                clearStarCnt++;
+            }
+            if (star1->isHanded()) {
+                star1->drop();
+                star1->hide();
+
+            }
+            if (star2->isHanded()) {
+                star2->drop();
+                star2->hide();
+            }
+            if (star3->isHanded()) {
+                star3->drop();
+                star3->hide();
+            }
+            if (star4->isHanded()) {
+                star4->drop();
+                star4->hide();
+            }
+            if (star5->isHanded()) {
+                star5->drop();
+                star5->hide();
+            }
+            if (clearStarCnt == 5) {
+                if (star1->isHanded() || star2->isHanded() || star3->isHanded() || star4->isHanded() || star5->isHanded()) {
+                    starBox5->setImage("Images/Stage/fullStar.png");
+
+                    clearStarCnt++;
+                }
+                if (star1->isHanded()) {
+                    star1->drop();
+                    star1->hide();
+
+                }
+                if (star2->isHanded()) {
+                    star2->drop();
+                    star2->hide();
+                }
+                if (star3->isHanded()) {
+                    star3->drop();
+                    star3->hide();
+                }
+                if (star4->isHanded()) {
+                    star4->drop();
+                    star4->hide();
+                }
+                if (star5->isHanded()) {
+                    star5->drop();
+                    star5->hide();
+                }
+
+                burgerComingDown->start();
+            
+            }
+
+        }
+
+        return true;
+    });
+
+}
+
+
+void StageComponent::makeStage10() {
+
+    //root->setIntroScene(Scene::create("introSceneStart", "Images/Background/background.PNG"));
+
+    //clickToStart = Object::create("Images/Button/start.png", root->getIntroScene(), 560, 150);
+    setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+
+    //room = Scene::create("introScene", "Images/Stage/room.png");
+
+    //sofa = Object::create("Images/Stage/sofaFront.png", roomLeftScene, 200, 150);
+    //puangEnding = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 560, 50);
+
+    whiteDoor = Object::create("Images/Stage/doorOpen.png", roomLeftScene, 720, 140);
+
+    gymMan = Object::create("Images/Stage/Æ®·¹ÀÌ³Ê_»ßÁü.png", roomLeftScene, 200, 150);
+
+    hamburger = Object::create("Images/Stage/hamburger.png", roomLeftScene, 600, 50);
+
+    puangEnding = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 650, 50);
+    puangEnding->hide();
+    messageBox = Object::create("Images/Stage/¼û±æµ¥¾ø±ÙÀ°2.PNG", roomLeftScene, 900, 600);
+    messageBox->hide();
+    puangGoing = Timer::create(3.f);
+    gymManGoOut = Timer::create(0.1f);
+    gymManGoOutAfter = Timer::create(2.f);
+    gymManGoOutBefore = Timer::create(2.f);
+    gymManGoOutX = 200;
+    gameClearScene = Scene::create("gameClearScene", "Images/Stage/clearBackground.PNG");
+    gameClearTimer = Timer::create(2.f);
+    hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+
+        puangEnding->show();
+        puangGoing->start();
+        return true;
+    });
+
+    puangGoing->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        gymManGoOut->start();
+        
+
+        return true;
+    });
+
+    gymManGoOut->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        if (gymManGoOutX < 900) {
+            if (gymManGoOutX == 700) {
+                timer->set(2.f);
+                messageBox->show();
+
+
+                gymMan->setImage("Images/Stage/Æ®·¹ÀÌ³Ê_¿ò.png");
+            }
+            else 
+                timer->set(0.1f);
+            gymManGoOutX += 10;
+            gymMan->locate(roomLeftScene, gymManGoOutX, 150);
+            messageBox->locate(roomLeftScene, gymManGoOutX+200, 500);
+            timer->start();
+        }
+        else {
+
+            gymManGoOutBefore->start();
+        }
+
+
+        return true;
+    });
+
+
+    gymManGoOutBefore->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        gymMan->hide();
+        whiteDoor->setImage("Images/Stage/doorClose.png");
+        messageBox->hide();
+        whiteDoor->locate(roomLeftScene, 880, 175);
+        gymManGoOutAfter->start();
+        return true;
+    });
+
+    gymManGoOutAfter->setOnTimerCallback([&](TimerPtr timer)-> bool {
+        //stage ++ 
+        // game clear
+        // menu Btn ?
+        // go next game ? 
+
+        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+        gameClearScene->enter();
+        // ¼ýÀÚ Ãß°¡ 
+        // 1ÅºÀ» °è¼Ó ±ú¸é 2,3,ÅºÀÌ±úÁö´Â¹®Á¦ ¹ß»ý 
+        if (root->getCurrentStage() == root->getClickedStage())
+            root->setCurrentStage(root->getCurrentStage() + 1);
+
+        gameClearTimer->start();
+
+        return true;
+    });
+
+
+    gameClearTimer->setOnTimerCallback([&](TimerPtr timer)->bool {
+        timer->stop();
+        root->getStageSelectScene()->enter();
+
+        root->stageSelectComponent->update();
+
+        return true;
+    });
+
+} 
