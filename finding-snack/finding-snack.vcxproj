@@ -185,6 +185,8 @@
     <Image Include="Images\Puang\푸앙_카우버거.png" />
     <Image Include="Images\Stage\angrybird.png" />
     <Image Include="Images\Stage\ballonSmall.png" />
+    <Image Include="Images\Stage\batR.png" />
+    <Image Include="Images\Stage\bat.png" />
     <Image Include="Images\Stage\bigFishOpenV.png" />
     <Image Include="Images\Stage\bigFishStand.png" />
     <Image Include="Images\Stage\bird.png" />
@@ -198,6 +200,7 @@
     <Image Include="Images\Stage\bookshelf.png" />
     <Image Include="Images\Stage\bottle.png" />
     <Image Include="Images\Stage\bottleBreak.png" />
+    <Image Include="Images\Stage\bulga.png" />
     <Image Include="Images\Stage\cannotPark.png" />
     <Image Include="Images\Stage\canPark.png" />
     <Image Include="Images\Stage\car.png" />
@@ -218,7 +221,9 @@
     <Image Include="Images\Stage\drawerClose.png" />
     <Image Include="Images\Stage\drawerOpen.png" />
     <Image Include="Images\Stage\elephant.png" />
+    <Image Include="Images\Stage\emptyStar.png" />
     <Image Include="Images\Stage\fish.png" />
+    <Image Include="Images\Stage\fullStar.png" />
     <Image Include="Images\Stage\gameOverScene.PNG" />
     <Image Include="Images\Stage\goLeft.PNG" />
     <Image Include="Images\Stage\goRight.PNG" />
@@ -231,6 +236,7 @@
     <Image Include="Images\Stage\ladder.png" />
     <Image Include="Images\Stage\ladderBroken.png" />
     <Image Include="Images\Stage\leftWindow.png" />
+    <Image Include="Images\Stage\nightWindow.png" />
     <Image Include="Images\Stage\paris.png" />
     <Image Include="Images\Stage\plant.png" />
     <Image Include="Images\Stage\plantClose.png" />
@@ -262,7 +268,11 @@
     <Image Include="Images\Stage\stageStart\8.PNG" />
     <Image Include="Images\Stage\stageStart\9.PNG" />
     <Image Include="Images\Stage\stand.png" />
+    <Image Include="Images\Stage\starcircle.PNG" />
     <Image Include="Images\Stage\table.png" />
+    <Image Include="Images\Stage\trainerBang1.PNG" />
+    <Image Include="Images\Stage\trainerBang2.PNG" />
+    <Image Include="Images\Stage\trainerBang3.PNG" />
     <Image Include="Images\Stage\trainerD1.png" />
     <Image Include="Images\Stage\trainerD2.png" />
     <Image Include="Images\Stage\trainerDF.png" />
@@ -281,6 +291,9 @@
     <Image Include="Images\Stage\windowSLO.png" />
     <Image Include="Images\Stage\windowSideOpen.png" />
     <Image Include="Images\Stage\windowSRO.png" />
+    <Image Include="Images\Stage\빙글1.PNG" />
+    <Image Include="Images\Stage\빙글2.PNG" />
+    <Image Include="Images\Stage\수직bat.png" />
     <Image Include="Images\Stage\푸앙_사랑.png" />
     <Image Include="Images\Stage\푸앙_운동.png" />
     <Image Include="Images\Stage\푸앙_운동2.png" />

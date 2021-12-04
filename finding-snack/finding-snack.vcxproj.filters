@@ -467,6 +467,45 @@
     <Image Include="Images\Stage\weight.png">
       <Filter>리소스 파일</Filter>
     </Image>
+    <Image Include="Images\Stage\bat.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\nightWindow.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\fullStar.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\emptyStar.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\bulga.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\batR.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\starcircle.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerBang3.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerBang1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\trainerBang2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\수직bat.png">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\빙글1.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="Images\Stage\빙글2.PNG">
+      <Filter>리소스 파일</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\FindingSnack\FindingSnackObject\FindingSnackObject.h">

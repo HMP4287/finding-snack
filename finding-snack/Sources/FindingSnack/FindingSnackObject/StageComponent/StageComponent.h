@@ -124,6 +124,47 @@ public:
     TimerPtr eatingFish;
     bool hamburgerCanClick;
 
+    //stage 9   
+    ObjectPtr sofaCushion;
+    ObjectPtr bat1; 
+    ObjectPtr bat2;
+    ObjectPtr bottle1;
+    ObjectPtr bottle2;
+    ObjectPtr gymManTurn;
+    ObjectPtr batTemp;
+    ObjectPtr gymManBang;
+    int gymManTurnStatus;
+    int gymManTurnCnt;
+
+    ObjectPtr star1; //window
+    ObjectPtr star2; //bingle
+    ObjectPtr star3; //bangsuk
+    ObjectPtr star4; //mainmenu
+    ObjectPtr star5; //bulga
+    ObjectPtr starBox1;
+    ObjectPtr starBox2;
+    ObjectPtr starBox3;
+    ObjectPtr starBox4;
+    ObjectPtr starBox5;
+    ObjectPtr starMainMenu;
+    int clearStarCnt;
+    bool starBoxStatus[5];
+    bool gymManDead;
+    int burgerY;
+    
+
+    ObjectPtr puangBat;
+    ObjectPtr puangBatTemp;
+
+    TimerPtr puangBatHit;
+    TimerPtr puangBatHitAfter;
+
+    TimerPtr burgerComingDown;
+
+    ObjectPtr bulga;
+
+
+
 
     // ¼º°ø ½Ã 
     ObjectPtr hamburger;
