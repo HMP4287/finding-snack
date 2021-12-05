@@ -1,7 +1,8 @@
 # Finding Snack
 <br/>
 <strong>
-by 손영진(20200768), 박현민(20202905)
+by 12조, 손영진(20200768), 박현민(20202905)
+
 </strong>
 <hr/>
 <br/>
@@ -40,9 +41,19 @@ https://youtu.be/f25FUGJf2PQ
 <hr/>
 <br/>
 
-## 게임 공략 
+## 게임 공략법 
 
-다른 마크업으로 가도록 링크하기  
+[stage1 공략](https://github.com/HMP4287/finding-snack/blob/master/Stage1.txt),
+[stage2 공략](https://github.com/HMP4287/finding-snack/blob/master/Stage2.txt),
+[stage3 공략](https://github.com/HMP4287/finding-snack/blob/master/Stage3.txt),
+[stage4 공략](https://github.com/HMP4287/finding-snack/blob/master/Stage4.txt),
+[stage5 공략](https://github.com/HMP4287/finding-snack/blob/master/Stage5.txt),
+[stage6 공략](https://github.com/HMP4287/finding-snack/blob/master/Stage6.txt),
+[stage7 공략](https://github.com/HMP4287/finding-snack/blob/master/Stage7.txt),
+[stage8 공략](https://github.com/HMP4287/finding-snack/blob/master/Stage8.txt),
+[stage9 공략](https://github.com/HMP4287/finding-snack/blob/master/Stage9.txt),
+[stage10 공략](https://github.com/HMP4287/finding-snack/blob/master/Stage10.txt).
+
 
 <hr/>
 <br/>
@@ -67,7 +78,7 @@ https://youtu.be/f25FUGJf2PQ
 
 <br/>
 
-<h3>Component</h3><br/>
+<h3>Component 클래스 </h3><br/>
 
 - FindingSnackObject를 상속함.
 
