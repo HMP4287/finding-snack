@@ -84,7 +84,7 @@ public:
     // StageMethod end --------------------------------------------------------------------------------------------------  
 
 
-    void start() { startGame(stageSelectScene); };
+    void start() { startGame(introScene); };
     // 객체가 생성될때 변수 초기화 및 초기 셋팅등 생성자 역할을 하게 된다.
     void enter() {};
 

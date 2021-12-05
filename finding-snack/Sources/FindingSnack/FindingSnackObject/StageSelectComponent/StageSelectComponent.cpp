@@ -19,7 +19,7 @@ void StageSelectComponent::enter() {
     }
     root->setClearStage(true, 0);
     root->setMainMenuBtn(Object::create("Images/Button/home.png", root->getStageSelectScene(), 1160, 610));
-    root->setCurrentStage(10);
+    root->setCurrentStage(1);
     root->setClickedStage(0);
 };
 
