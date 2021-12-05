@@ -50,9 +50,8 @@ void StageComponent::enter() {
     goBackMainMenuBtnLFake = Object::create("Images/Button/home.png", roomLeftScene, 110, 630);
     stageRestartBtnRFake = Object::create("Images/Button/restartBtn.png", roomRightScene, 10, 630);
     goBackMainMenuBtnRFake = Object::create("Images/Button/home.png", roomRightScene, 110, 630);
-    
     goRightRoomBtnFake->setScale(0.7);
-    goLeftRoomBtnFake->setScale(0.7);
+    goLeftRoomBtn->setScale(0.7);
     hideFake();
 
 
