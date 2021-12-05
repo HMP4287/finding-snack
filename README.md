@@ -1,55 +1,43 @@
 # Finding Snack
+<br/>
+by 손영진(2020), 박현민(20202905)
 <hr/>
+<br/>
 
-# 게임 설명 
+## 게임 설명  
+
+<br/>
+
+### 햄버거를 너무 좋아하는 푸앙이. 
+
+### 다이어트 중에도 자꾸만 햄버거를 먹는다.
+
+### 결국 트레이너는 푸앙이의 다이어트를 위해 햄버거를 숨기기로 결심!
+
+### 푸앙이가 트레이너 몰래 햄버거를 찾아서 먹을 수 있게 도와주자!
+
+
+
+## 게임 방법
+
+### 
+
+
 <hr/>
-
-# 게임 방법
-<hr/> 
-
-
-
-# 할 일 목록
 <br/>
 
-### 현민 할 일 
-<br/>
+## 게임 공략 
 
+다른 마크업으로 가도록 링크하기  
 
-<br/>
-
-
-### 영진 할 일 
-<br/>
-
-
-<br/>
 <hr/>
-
-
-# 개발 Flow 
 <br/>
 
-MainMenu씬을 만들 것이다.
 
-MainMenuComponent 디렉토리 생성.
+## 프로젝트 구조 
 
-MainMenuComponent.h , MainMenuComponent.cpp 파일 생성
-
-ComponentTemplate 파일 참고하여 MainMenuComponets.h 작성.
-
-FindingSnack.h에서 수정  필요한 함수들이 생긴다면 (ex) resetMainMenu()) 컨펌 후 추가하기.
-
-
-h, cpp 파일 개발 진행.
-
-
-Main.cpp에서 inclue 후 작성되어 있는 코드 참조하여 똑같이 진행.
-
-
-
-
-
-
-<br/>
 <hr/>
+<br/>
+
+
+
