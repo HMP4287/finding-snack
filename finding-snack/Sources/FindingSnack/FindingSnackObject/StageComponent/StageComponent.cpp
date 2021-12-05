@@ -297,6 +297,8 @@ void StageComponent::makeStage1() {
     gameOverPuangWeightUp = Timer::create(1.f);
     gameOverPuangWeightDown = Timer::create(1.f);
     puangWeightCnt = 0;
+    canBurger = true;
+    canTrainer = true; 
 
     
 
@@ -343,9 +345,14 @@ void StageComponent::makeStage1() {
     wallCloset->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // ÃÊ±âÈ­°¡ µÇ¾úÀ»Áö ? ±×¸®°í ÀÌ Å¬·¡½ºÀÇ ¿£ÅÍ°¡ ½ÇÇàµÉÁö ? 
 		//Á¢±ÙÇÑ´Ù 
-        showFake();
-        puangFail->show();
-        puangFailMoving->start();
+        if (canTrainer) {
+            showFake();
+            puangFail->show();
+            puangFailMoving->start();
+
+            canBurger = false;
+        }
+
 
 		
 
@@ -427,18 +434,24 @@ void StageComponent::makeStage1() {
     });
     // ¼º°ø ½Ã 
     hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)-> bool {
-        //stage ++ 
-        // game clear
-        // menu Btn ?
-        // go next game ? 
-        setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
-        gameClearScene->enter();
-        // ¼ýÀÚ Ãß°¡ 
-        // 1ÅºÀ» °è¼Ó ±ú¸é 2,3,ÅºÀÌ±úÁö´Â¹®Á¦ ¹ß»ý 
-        if (root->getCurrentStage() ==  root->getClickedStage())
-            root->setCurrentStage(root->getCurrentStage() + 1);
+        
+        if (canBurger) {
+            //stage ++ 
+     // game clear
+     // menu Btn ?
+     // go next game ? 
+            setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+            gameClearScene->enter();
+            // ¼ýÀÚ Ãß°¡ 
+            // 1ÅºÀ» °è¼Ó ±ú¸é 2,3,ÅºÀÌ±úÁö´Â¹®Á¦ ¹ß»ý 
+            if (root->getCurrentStage() == root->getClickedStage())
+                root->setCurrentStage(root->getCurrentStage() + 1);
 
-        gameClearTimer->start();
+            gameClearTimer->start();
+            canTrainer = false; 
+        }
+
+
 
         return true;
     });
@@ -488,6 +501,8 @@ void StageComponent::makeStage2() {
     bitjaru->setScale(1.5f);
     bitjaru->hide();
 
+    canBurger = true;
+    canTrainer = true; 
 
     // ¼º°ø
     
@@ -526,9 +541,14 @@ void StageComponent::makeStage2() {
         //gymMan = Object::create("Images/Trainer/trainer.png", roomLeftScene, 880, 150);
 
         //gymMan->locate(roomLeftScene, 880, 150);
-        showFake();
-        puangFail->show();
-        puangFailMoving->start();
+        if (canTrainer) {
+            resetBag();
+            showFake();
+            puangFail->show();
+            puangFailMoving->start();
+            canBurger = false; 
+        }
+
         return true;
     });
     // ½ÇÆÐÁ¶°Ç Ãß°¡ÇÒ °Í 
@@ -631,39 +651,46 @@ void StageComponent::makeStage2() {
 
     // ¼º°ø 
     hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
-        if (burgerMoved) {
-            setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
-            gameClearScene->enter();
-            // ¼ýÀÚ Ãß°¡ 
-            // 1ÅºÀ» °è¼Ó ±ú¸é 2,3,ÅºÀÌ±úÁö´Â¹®Á¦ ¹ß»ý 
-            if (root->getCurrentStage() == root->getClickedStage())
-                root->setCurrentStage(root->getCurrentStage() + 1);
+        if (canBurger) {
+            canTrainer = false;
+            if (burgerMoved) {
+                resetBag();
+                setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+                gameClearScene->enter();
+                // ¼ýÀÚ Ãß°¡ 
+                // 1ÅºÀ» °è¼Ó ±ú¸é 2,3,ÅºÀÌ±úÁö´Â¹®Á¦ ¹ß»ý 
+                if (root->getCurrentStage() == root->getClickedStage())
+                    root->setCurrentStage(root->getCurrentStage() + 1);
 
-            gameClearTimer->start();
+                gameClearTimer->start();
 
-        }
-        else if (bitjaru->isHanded()) {
-            showFake();
-            // Çª¾ÓÀÌ + ºøÀÚ·ç µîÀåÇÑ´Ù.
-            bitjaru->drop();
-            bitjaru->hide();
-            //bitjaru = Object::create("Images/Stage/bitjaruLeft.png", roomLeftScene, 250, 100);
-            bitjaruTemp = Object::create("Images/Stage/bitjaruLeft.png", roomLeftScene, 250, 100);
-            bitjaruTemp->setScale(1.5f);
-            puangBitjaru = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 250, 50);
-            // 1ÃÊÀÖ´Ù°¡ ¹ö°Å ºøÀÚ·ç·Î Ä£ È­¸é µîÀå 
-            // 
-            // ºøÀÚ·ç È¸Àü + ¹ö°Å ÀÌµ¿ 
-            
-            burgerMovedTimer->start();
+            }
+            else if (bitjaru->isHanded()) {
+                showFake();
+                // Çª¾ÓÀÌ + ºøÀÚ·ç µîÀåÇÑ´Ù.
+                bitjaru->drop();
+                bitjaru->hide();
+                bitjaru->locate(roomRightScene, 1280, 720);
+                //bitjaru = Object::create("Images/Stage/bitjaruLeft.png", roomLeftScene, 250, 100);
+                bitjaruTemp = Object::create("Images/Stage/bitjaruLeft.png", roomLeftScene, 250, 100);
+                bitjaruTemp->setScale(1.5f);
+                puangBitjaru = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 250, 50);
+                // 1ÃÊÀÖ´Ù°¡ ¹ö°Å ºøÀÚ·ç·Î Ä£ È­¸é µîÀå 
+                // 
+                // ºøÀÚ·ç È¸Àü + ¹ö°Å ÀÌµ¿ 
 
-            // ÅðÀå   burgerMoved = true
-            
-        }
-        else {
-            showMessage("ÆÈÀÌ ¾È ´êÇª¾Ó");
+                burgerMovedTimer->start();
+
+                // ÅðÀå   burgerMoved = true
+
+            }
+            else {
+                showMessage("ÆÈÀÌ ¾È ´êÇª¾Ó");
+
+            }
         
         }
+ 
 
         return true;
     });
@@ -750,30 +777,36 @@ void StageComponent::makeStage3() {
     puangFail->hide();
     puangJumping = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomRightScene, 240, 300);
     puangJumping->hide();
+    chairBookIsExist = false; 
     wallCloset->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
 
         if (wallIsOpen) {
         
-            if (brokenChair->isHanded()) {
+            if (brokenChair->isHanded() && (!chairBookIsExist)) {
 
                 brokenChair->drop();
                 brokenChair->hide();
+                brokenChair->locate(roomRightScene, 1280, 720);
 
                 brokenChairTemp = Object::create("Images/Stage/ladderBroken.png", roomRightScene, 280, 200);
                 burgerReach = 1;
+                chairBookIsExist = true;
             }
-            else if (book2->isHanded() || book3->isHanded()) {
+            else if ((book2->isHanded() || book3->isHanded()) && (!chairBookIsExist)) {
                 if (book2) {
                     book2->drop();
                     book2->hide();
+                    book2->locate(roomRightScene, 1280, 720);
                 }
                 if (book3) {
                     book3->drop();
                     book3->hide();
+                    book3->locate(roomRightScene, 1280, 720);
                 }
 
                 bookTemp = Object::create("Images/Stage/bookItem.png", roomRightScene, 280, 200);
                 burgerReach = 2;
+                chairBookIsExist = true;
 
             }
         }
@@ -809,6 +842,7 @@ void StageComponent::makeStage3() {
         }
         // ¹ö°Å Ã¥¹ÞÄ§ ¼º°ø 
         else if (burgerReach == 2) {
+            resetBag();
             //puangFail->show();
             //puangFail->setImage("Images/Puang/Çª¾Ó_»ç¶û.png");
             showFake();
@@ -888,6 +922,7 @@ void StageComponent::makeStage3() {
     book1->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         //book1->hide();
         showFake();
+        resetBag();
         puangFail->show();
         puangFailMoving->start();
 
@@ -1352,10 +1387,13 @@ void StageComponent::makeStage6() {
     gameClearScene = Scene::create("gameClearScene", "Images/Stage/clearBackground.PNG");
     gameClearTimer = Timer::create(2.f);
 
+    keyClickAble = true;
+
 
     closetUnlocked = false;
     hamburger = Object::create("Images/Stage/hamburger.png", roomLeftScene, 280, 200);
     hamburger->hide();
+    noBlocking = false; 
     closet->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         
         if (closetUnlocked) {
@@ -1378,6 +1416,8 @@ void StageComponent::makeStage6() {
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
         keySpin = false;
         gymManSpin = false;
+        resetBag();
+
         gameClearScene->enter();
         // ¼ýÀÚ Ãß°¡ 
         // 1ÅºÀ» °è¼Ó ±ú¸é 2,3,ÅºÀÌ±úÁö´Â¹®Á¦ ¹ß»ý 
@@ -1407,16 +1447,19 @@ void StageComponent::makeStage6() {
     });
     windowRight->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
        
+
         if (windowStatus == 0) {
             windowRight->setImage("Images/Stage/windowSRO.png");
             windowStatus = 1;
         }
         else if (windowStatus == 1) {
             windowRight->setImage("Images/Stage/windowSideOpen.png");
-            showFake();
+            if (!noBlocking) 
+                showFake();
             key->show();
             gymMan->show();
-            cloud->show();
+            if (!noBlocking) 
+                cloud->show();
             keySpinTimer->start();
             gymManSpinTimer->start();
         }
@@ -1486,6 +1529,7 @@ void StageComponent::makeStage6() {
     });
     gymMan->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         showFake();
+        keyClickAble = false;
         gymManSpin = false;
         
         keySpin = false;
@@ -1566,11 +1610,18 @@ void StageComponent::makeStage6() {
     });
 
     key->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
-        keySpin = false;
-        gymManSpin = false;
-        hideFake();
+        if (keyClickAble) {
+            keySpin = false;
+            gymManSpin = false;
 
-        key->pick();
+            hideFake();
+
+            key->pick();
+            noBlocking = true;
+            //key->locate(roomRightScene, 1280, 720);
+
+
+        }
 
         return true;
     });
@@ -1836,6 +1887,9 @@ void StageComponent::makeStage8() {
     puangFail = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 100, 50);
     puangFail->hide();
     fishDead = false; 
+    blockBigFishClick = false;
+    blockDishClick = false; 
+    blockChickenClick = false;
     refrigeratorUp->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         refrigeratorUp->setImage("Images/Stage/rUO.png");
         return true;
@@ -1862,6 +1916,7 @@ void StageComponent::makeStage8() {
         //if (fishDead)
         //    return true; 
 
+
         fish->pick();
         //fishDead = true; 
         
@@ -1871,12 +1926,23 @@ void StageComponent::makeStage8() {
     // ½ÇÆÐ Á¶°Ç 
     chicken->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         //chicken->hide();
-        if (fishDead)
-            return true;
-        showFake();
-        puangFail->show();
+        // bigfish, dish block 
+        if (!blockChickenClick) {
 
-        puangFailMoving->start();
+            if (fishDead)
+                return true;
+
+
+            showFake();
+            puangFail->show();
+            puangFailMoving->start();
+            blockBigFishClick = true;
+            blockDishClick = true; 
+            blockChickenClick = true;
+            
+        }
+        
+
         // ½ÇÆÐ Á¶°Ç 
         return true;
     });
@@ -1957,21 +2023,28 @@ void StageComponent::makeStage8() {
     dish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // ¸Ô´Â ¾Ö´Ï Ãß°¡ 
 
-
-        if (fish->isHanded()) {
-            showFake();
-            fishDead = true;
-            fish->drop();
-            fish->hide();
-            fish->locate(roomLeftScene, 1280, 720);
-            //fishDead = true;
-            //fish = NULL;
-            // ±×¸©À§¿¡ »ý¼º 
-            // »õ Á¢±Ù // ¹ö°Å»ý±è 
-            // »õ ¸ÔÀ½ 
-            puangGivingFish = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 130, 50);
-            givingFish->start();
+        if (!blockDishClick) {
+            if (fish->isHanded()) {
+                showFake();
+                fishDead = true;
+                fish->drop();
+                fish->hide();
+                fish->locate(roomLeftScene, 1280, 720);
+                //fishDead = true;
+                //fish = NULL;
+                // ±×¸©À§¿¡ »ý¼º 
+                // »õ Á¢±Ù // ¹ö°Å»ý±è 
+                // »õ ¸ÔÀ½ 
+                puangGivingFish = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 130, 50);
+                givingFish->start();
+            }
+            blockBigFishClick = true;
+            blockDishClick = true;
+            blockChickenClick = true;   
         }
+
+
+
         return true;
     });
     givingFish->setOnTimerCallback([&](TimerPtr timer)->bool {
@@ -2012,18 +2085,25 @@ void StageComponent::makeStage8() {
 
     bigFish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // ½ÇÆÐ Á¶°Ç2 
-        if (fishDead)
-            return true;
-        if (fish->isHanded()) {
-            showFake();
-            puangFail->show();
-            puangFail->locate(roomLeftScene, 600, 150);
-            puangFail->setImage("Images/Puang/Çª¾Ó_µÞ_¼Õ.png");
-            fishTemp = Object::create("Images/Stage/fish.png", roomLeftScene, 750, 250);
+        if (!blockBigFishClick) {
+        
+            if (fishDead)
+                return true;
+            if (fish->isHanded()) {
+                showFake();
+                puangFail->show();
+                puangFail->locate(roomLeftScene, 600, 150);
+                puangFail->setImage("Images/Puang/Çª¾Ó_µÞ_¼Õ.png");
+                fishTemp = Object::create("Images/Stage/fish.png", roomLeftScene, 750, 250);
 
-            puangFailMoving->start();
-             
+                puangFailMoving->start();
+
+            }
+            blockDishClick = true;
+            blockBigFishClick = true;
+            blockChickenClick = true; 
         }
+
         return true;
     });
 
@@ -2132,7 +2212,7 @@ void StageComponent::makeStage9() {
     batTemp->hide();
     star2 = Object::create("Images/Stage/starcircle.PNG", roomLeftScene, 150, 10);
     star2->hide();
-
+    sofaCushionOnce = false;
     burgerComingDown->setOnTimerCallback([&](TimerPtr timer)->bool {
         hamburger->show();
         //showFake();
@@ -2174,6 +2254,10 @@ void StageComponent::makeStage9() {
             if (gymManTurnCnt == 2) {
                 showMessage("´õ »¡¸® µ¹·Á¾ß ÇØÇª¾Ó");
             }
+            if (gymManTurnCnt == 15) {
+                showMessage("´õ »¡¸® µ¹·Á¾ß ÇØÇª¾Ó!!!");
+            }
+
             if (gymManTurnStatus == 0) {
                 gymManTurn->setImage("Images/Stage/ºù±Û2.PNG");
                 //gymManTurn->setScale(1.5f);
@@ -2205,6 +2289,7 @@ void StageComponent::makeStage9() {
         // game clear
         // menu Btn ?
         // go next game ? 
+        resetBag();
         if (hamburgerCanClick) {
             setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
             gameClearScene->enter();
@@ -2237,11 +2322,16 @@ void StageComponent::makeStage9() {
         return true;
     });
     sofaCushion->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
-        if (gymManDead) {
-            sofaCushion->locate(roomLeftScene, 400, 50);
-            star3->show();
-            batTemp->setImage("Images/Stage/bat.png");
+        if (!sofaCushionOnce) {
+        
+            if (gymManDead) {
+                sofaCushion->locate(roomLeftScene, 400, 50);
+                star3->show();
+                batTemp->setImage("Images/Stage/bat.png");
+            }
+            sofaCushionOnce = true;
         }
+
         return true;
     });
 
@@ -3023,6 +3113,11 @@ void StageComponent::resetObject() {
     starMainMenu = NULL;
     clearStarCnt = NULL;
     //starBoxStatus[5];
+    starBoxStatus[0] = 0;
+    starBoxStatus[1] = 0;
+    starBoxStatus[2] = 0;
+    starBoxStatus[3] = 0;
+    starBoxStatus[4] = 0;
     gymManDead = NULL;
     burgerY = NULL;
     puangBat = NULL;
