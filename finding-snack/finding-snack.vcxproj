@@ -139,7 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sources\FindingSnack\ComponentTemplate.cpp" />
     <ClCompile Include="Sources\FindingSnack\FindingSnackObject\IntroComponent\IntroComponent.cpp" />
     <ClCompile Include="Sources\FindingSnack\FindingSnackObject\MainMenuComponent\MainMenuComponent.cpp" />
     <ClCompile Include="Sources\FindingSnack\FindingSnackObject\StageComponent\StageComponent.cpp" />
@@ -313,7 +312,6 @@
     <Image Include="Images\Trainer\trainer.png" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\FindingSnack\ComponentTemplate.h" />
     <ClInclude Include="Sources\FindingSnack\FindingSnackObject\FindingSnackObject.h" />
     <ClInclude Include="Sources\FindingSnack\FindingSnack.h" />
     <ClInclude Include="Sources\FindingSnack\FindingSnackObject\IntroComponent\IntroComponent.h" />

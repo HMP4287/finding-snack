@@ -10,7 +10,6 @@ int main()
 
     FindingSnackObject findingSnackGame;
 
-    // FindingSnackGame을 개발하기 위해 필요한 씬들을 각각 Components 안에서 생성하여 findingSnackGame 최종적으로 개발.
     IntroComponent introComponent(&findingSnackGame);
     MainMenuComponent mainMenuComponent(&findingSnackGame);
     StageSelectComponent stageSelectComponent(&findingSnackGame);

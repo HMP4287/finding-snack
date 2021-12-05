@@ -24,9 +24,6 @@
     <ClCompile Include="Sources\FindingSnack\FindingSnackObject\StageSelectComponent\StageSelectComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\FindingSnack\ComponentTemplate.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Sources\FindingSnack\FindingSnackObject\StageComponent\StageComponent.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -533,9 +530,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Sources\FindingSnack\FindingSnackObject\MainMenuComponent\MainMenuComponent.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\FindingSnack\ComponentTemplate.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Sources\FindingSnack\FindingSnackObject\StageSelectComponent\StageSelectComponent.h">

@@ -4,133 +4,87 @@
 
 
 using namespace bangtal;
-// Product
 class FindingSnackObject : public FindingSnack
 {
 
 protected:
 
 
-    // IntroData
-    // IntroData 관련 데이터는 component에 저장 
+    // IntroData start  --------------------------------------------------------------------------------------------------  
+    // 인트로 관련 데이터는 component에 저장되어 있음. 
     ScenePtr introScene;
+    // IntroData end  --------------------------------------------------------------------------------------------------  
 
-    // MainMenuData  --------------------------------------------------------------------------------------------------  
-
+    // MainMenuData start --------------------------------------------------------------------------------------------------  
     ScenePtr mainMenuScene;
     ObjectPtr startBtn;
     ObjectPtr gameInfoBtn;
     ObjectPtr gameInfo; 
     ObjectPtr gameInfoOutBtn;
-    // MainMenuData  --------------------------------------------------------------------------------------------------  
+    // MainMenuData end --------------------------------------------------------------------------------------------------  
 
-
-    // StageSelectData --------------------------------------------------------------------------------------------------  
-
+    // StageSelectData start --------------------------------------------------------------------------------------------------  
     ScenePtr stageSelectScene;
     ObjectPtr stageSelectBtn;
-
     ObjectPtr stagesBtns[STAGE_MAX];
-
     ObjectPtr mainMenuBtn;
-
-    // StageStartBtn
     char unclearNumImgPath[STAGE_MAX][40];
     char clearNumImgPath[STAGE_MAX][40];
-
-
     int clearStage[STAGE_MAX];
     int currentStage;
-
     int clickedStage; 
-
-    // StageSelectData   --------------------------------------------------------------------------------------------------  
-
-
-
+    // StageSelectData  end --------------------------------------------------------------------------------------------------  
+    
     // StagesData  --------------------------------------------------------------------------------------------------  
-    // StageData 관련된 데이터는 StageComponent에 저장되어 있음. 
- 
-    //ScenePtr stagesScene[STAGE_MAX];
+    // 각 Stage에 관련된 데이터는 StageComponent에 저장되어 있음. 
     ScenePtr stageScene;
-
-
-
-    // StagesData  --------------------------------------------------------------------------------------------------  
+    // StagesData  end --------------------------------------------------------------------------------------------------  
 
 public:
 
-    // Constructor 
-    // 여기서 Components 구성한다면 ?
     FindingSnackObject() {};
     ~FindingSnackObject() {};
-    // Constructor 
 
-    // IntroMethod
+    // IntroMethod start --------------------------------------------------------------------------------------------------  
     void setIntroScene(ScenePtr s) { introScene = s; };
     ScenePtr getIntroScene() { return introScene; };
-    // IntroMethod
+    // IntroMethod end --------------------------------------------------------------------------------------------------  
 
-    // set Components --------------------------------------------------------------------------------------------------  
-
-
-    // set Components --------------------------------------------------------------------------------------------------  
-
-
-
-    // MainMenuMethod --------------------------------------------------------------------------------------------------  
-    // setter 
+    // MainMenuMethod start --------------------------------------------------------------------------------------------------  
     void setMainMenuScene(ScenePtr s) { mainMenuScene = s; };
     void setMainMenuStartBtn(ObjectPtr o) { startBtn = o; };
     void setGameInfoBtn(ObjectPtr o) { gameInfoBtn = o; };
     void setGameInfoOutBtn(ObjectPtr o) { gameInfoOutBtn = o; };
     void setGameInfo(ObjectPtr o) { gameInfo = o; };
-
-    // getter 
     ScenePtr getMainMenuScene() { return mainMenuScene; };
     ObjectPtr getMainMenuStartBtn() { return startBtn; };
     ObjectPtr getGameInfoBtn() { return gameInfoBtn; };
     ObjectPtr getGameInfoOutBtn() { return gameInfoOutBtn; };
     ObjectPtr getGameInfo() { return gameInfo; };
+    // MainMenuMethod end --------------------------------------------------------------------------------------------------  
 
-
-    // reset  //void resetMainMenu() { mainMenuScene = Scene::create("MainMenuScene", "Images/Background/startScene.png"); }; // 초기화 & 리셋 함수
-
-    // MainMenuMethod --------------------------------------------------------------------------------------------------  
-
-    // StageSelectMethod --------------------------------------------------------------------------------------------------  
+    // StageSelectMethod start --------------------------------------------------------------------------------------------------  
     void setStageSelectScene(ScenePtr s) { stageSelectScene = s; };
     ScenePtr getStageSelectScene() { return stageSelectScene; };
     void setStagesBtns(ObjectPtr o, int index) { stagesBtns[index] = o; };
     ObjectPtr getStagesBtns(int index) { return stagesBtns[index]; };
     void setMainMenuBtn(ObjectPtr o) { mainMenuBtn = o; };
     ObjectPtr getMainMenuBtn() { return mainMenuBtn; };
-    // 깬 스테이지 확인용 
     void setClearStage(int index, bool isClear) { clearStage[index] = isClear; };
     bool getClearStage(int index) { return clearStage[index]; };
-    // 현재 클릭한 스테이지 확인용 
     void setCurrentStage(int stageNum) { currentStage = stageNum; };
     int getCurrentStage() { return currentStage; };
-
     void setClickedStage(int stageNum) { clickedStage = stageNum; };
     int getClickedStage() { return clickedStage; };
+    // StageSelectMethod end --------------------------------------------------------------------------------------------------  
 
-
-
-    // StageSelectMethod  --------------------------------------------------------------------------------------------------  
-
-
-    // StageMethod  --------------------------------------------------------------------------------------------------  
-
+    // StageMethod start --------------------------------------------------------------------------------------------------  
     void setStage(ScenePtr s) { stageScene = s; };
     ScenePtr getStage() { return stageScene; };
-    // StageMethod --------------------------------------------------------------------------------------------------  
+    // StageMethod end --------------------------------------------------------------------------------------------------  
 
 
-
-
-    // 추후 인트로로 시작되게 변경해줘야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    void start() { startGame(introScene); };
+    void start() { startGame(stageSelectScene); };
     // 객체가 생성될때 변수 초기화 및 초기 셋팅등 생성자 역할을 하게 된다.
     void enter() {};
 
@@ -145,8 +99,5 @@ public:
 
 	// 사용자의 조작에 어떤반응을 할것인지를 컨트롤 할 수 있는 부분이다.
     void event() {};
-    
-    //void makeStage(int stageNum) {};
-
 
 };
