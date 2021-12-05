@@ -36,6 +36,8 @@ public:
     ObjectPtr sofa;  
     ObjectPtr sofaCushionLeft;
     ObjectPtr sofaCushionRight;
+    bool canBurger;
+    bool canTrainer;
 
     // stage2
     ObjectPtr puangBitjaru;
@@ -63,6 +65,7 @@ public:
     TimerPtr puangLovingTimer;
     int burgerReach;
     bool wallIsOpen;
+    bool chairBookIsExist;
 
     // stage4
     ObjectPtr car;
@@ -108,6 +111,8 @@ public:
     bool keySpin;
     int keyStatus;
     bool closetUnlocked;
+    bool noBlocking;
+    bool keyClickAble;
     
     // stage7
     ObjectPtr refrigeratorUp;
@@ -135,6 +140,9 @@ public:
     TimerPtr comeBigFish;
     TimerPtr eatingFish;
     bool hamburgerCanClick;
+    bool blockBigFishClick;
+    bool blockDishClick;
+    bool blockChickenClick;
 
     //stage 9   
     ObjectPtr sofaCushion;
@@ -169,6 +177,7 @@ public:
     TimerPtr puangBatHitAfter;
     TimerPtr burgerComingDown;
     ObjectPtr bulga;
+    bool sofaCushionOnce;
 
     // stage10
     ObjectPtr puangEnding;
