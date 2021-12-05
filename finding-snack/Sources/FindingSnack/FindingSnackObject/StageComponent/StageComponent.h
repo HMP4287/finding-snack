@@ -103,6 +103,8 @@ public:
     TimerPtr gymManSpinTimer;
     bool gymManSpin;
     int gymStatus;
+    int gymManSpinCnt;
+    int keySpinCnt;
     bool keySpin;
     int keyStatus;
     bool closetUnlocked;

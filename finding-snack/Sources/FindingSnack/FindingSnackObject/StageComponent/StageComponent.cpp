@@ -342,6 +342,7 @@ void StageComponent::makeStage1() {
     wallCloset->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // 초기화가 되었을지 ? 그리고 이 클래스의 엔터가 실행될지 ? 
 		//접근한다 
+        showFake();
         puangFail->show();
         puangFailMoving->start();
 
@@ -376,6 +377,7 @@ void StageComponent::makeStage1() {
 
     facedGameOver->setOnTimerCallback([&](TimerPtr timer)->bool {
         timer->stop();
+        hideFake();
         
         //root->getStageSelectScene()->enter();
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
@@ -523,6 +525,7 @@ void StageComponent::makeStage2() {
         //gymMan = Object::create("Images/Trainer/trainer.png", roomLeftScene, 880, 150);
 
         //gymMan->locate(roomLeftScene, 880, 150);
+        showFake();
         puangFail->show();
         puangFailMoving->start();
         return true;
@@ -540,6 +543,7 @@ void StageComponent::makeStage2() {
 
     puangCrying->setOnTimerCallback([&](TimerPtr timer)->bool {
         timer->stop();
+
         puangFail->setImage("Images/Puang/푸앙_절규.png");
 
         facedGameOver->start();
@@ -548,6 +552,7 @@ void StageComponent::makeStage2() {
 
     facedGameOver->setOnTimerCallback([&](TimerPtr timer)->bool {
         timer->stop();
+        hideFake();
         
         //root->getStageSelectScene()->enter();
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
@@ -637,6 +642,7 @@ void StageComponent::makeStage2() {
 
         }
         else if (bitjaru->isHanded()) {
+            showFake();
             // 푸앙이 + 빗자루 등장한다.
             bitjaru->drop();
             bitjaru->hide();
@@ -678,6 +684,7 @@ void StageComponent::makeStage2() {
         return true;
     });
     burgerMovedTimerAfter->setOnTimerCallback([&](TimerPtr timer)->bool {
+        hideFake();
         timer->stop();
         bitjaruTemp->hide();
         puangBitjaru->hide();
@@ -791,6 +798,7 @@ void StageComponent::makeStage3() {
         // 버거 부러진의자 new 실패 
         else if (burgerReach == 1) {
             //puangFail->show();
+            showFake();
             puangJumping->show();
 
             puangFallDown->start();
@@ -802,7 +810,7 @@ void StageComponent::makeStage3() {
         else if (burgerReach == 2) {
             //puangFail->show();
             //puangFail->setImage("Images/Puang/푸앙_사랑.png");
-
+            showFake();
             puangJumping->show();
             puangJumping->setImage("Images/Puang/푸앙_사랑.png");
 
@@ -825,6 +833,7 @@ void StageComponent::makeStage3() {
     puangLovingTimer->setOnTimerCallback([&](TimerPtr timer)->bool {
         timer->stop();
 
+        hideFake();
         resetBag();
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
         gameClearScene->enter();
@@ -857,6 +866,7 @@ void StageComponent::makeStage3() {
         return true;
     });
     puangFallDownAfter->setOnTimerCallback([&](TimerPtr timer)->bool {
+        hideFake();
         timer->stop();
         facedGameOver->start();
 
@@ -876,6 +886,7 @@ void StageComponent::makeStage3() {
     // 실패 시작 접근, 책사라짐 놀람 ... 
     book1->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         //book1->hide();
+        showFake();
         puangFail->show();
         puangFailMoving->start();
 
@@ -901,6 +912,7 @@ void StageComponent::makeStage3() {
     facedGameOver->setOnTimerCallback([&](TimerPtr timer)->bool {
         timer->stop();
         
+        hideFake();
         //root->getStageSelectScene()->enter();
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
 
@@ -1193,6 +1205,7 @@ void StageComponent::makeStage5() {
 
     gymMan->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         if (weight->isHanded()) {
+            showFake();
             weight->drop();
             weight->hide(); 
             weightTemp->show();
@@ -1238,6 +1251,7 @@ void StageComponent::makeStage5() {
         else {
             hamburgerCanClick = true;
             gymMan->hide();
+            hideFake();
         }
         return true;
     });
@@ -1246,6 +1260,7 @@ void StageComponent::makeStage5() {
         if (ballon->isHanded()) {
             ballon->drop();
             ballon->hide();
+            showFake();
             ballonGettingBig = Object::create("Images/Stage/ballon.png", roomLeftScene, ballonX, ballonY);
             ballonGettingBig->setScale(ballonScale); 
             elephantBallonGetBig->start();
@@ -1267,7 +1282,7 @@ void StageComponent::makeStage5() {
         }
 
         else {
-            
+            hideFake();
             ballonGettingBig->hide();
             weight->show(); 
         }
@@ -1312,11 +1327,12 @@ void StageComponent::makeStage6() {
 
     gymManSpin = true;
     keySpin = true; 
-
+    gymManSpinCnt = 0;
+    keySpinCnt = 0;
     gymStatus = 0;
     keyStatus = 0;
 
-    gymManSpinTimer = Timer::create(0.5f);
+    gymManSpinTimer = Timer::create(0.1f);
     keySpinTimer = Timer::create(1.0f);
 
     gameOverScene = Scene::create("gameOverScene", "Images/Stage/gameOverScene.PNG");
@@ -1357,7 +1373,10 @@ void StageComponent::makeStage6() {
         return true;
     });
     hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
+        keySpin = false;
+        gymManSpin = false;
         gameClearScene->enter();
         // 숫자 추가 
         // 1탄을 계속 깨면 2,3,탄이깨지는문제 발생 
@@ -1393,6 +1412,7 @@ void StageComponent::makeStage6() {
         }
         else if (windowStatus == 1) {
             windowRight->setImage("Images/Stage/windowSideOpen.png");
+            showFake();
             key->show();
             gymMan->show();
             cloud->show();
@@ -1407,6 +1427,7 @@ void StageComponent::makeStage6() {
         timer->stop();
 
         if (keySpin) {
+        //if (keySpin) {
             timer->set(1.0f);
             if (keyStatus % 4 == 0) {
                 key->setImage("Images/Stage/key2.png");
@@ -1421,6 +1442,7 @@ void StageComponent::makeStage6() {
                 key->setImage("Images/Stage/key.png");
             }
             keyStatus++;
+            
 
             timer->start();
         }
@@ -1433,7 +1455,7 @@ void StageComponent::makeStage6() {
         timer->stop();
 
         if (gymManSpin) {
-            timer->set(0.5f);
+            timer->set(0.1f);
             if (gymStatus % 4 == 0) {
                 gymMan->setImage("Images/Trainer/trainer2.png");
             }
@@ -1447,6 +1469,7 @@ void StageComponent::makeStage6() {
                 gymMan->setImage("Images/Trainer/trainer1.png");
             }
             gymStatus++;
+            
 
             timer->start();
         }
@@ -1457,6 +1480,8 @@ void StageComponent::makeStage6() {
     });
     gymMan->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         gymManSpin = false;
+        keySpin = false;
+        //showFake();
         puangFail->show();
         puangFailMoving->start();
 
@@ -1481,6 +1506,7 @@ void StageComponent::makeStage6() {
 
     facedGameOver->setOnTimerCallback([&](TimerPtr timer)->bool {
         timer->stop();
+        hideFake();
         
         //root->getStageSelectScene()->enter();
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
@@ -1533,6 +1559,9 @@ void StageComponent::makeStage6() {
 
     key->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         keySpin = false;
+        gymManSpin = false;
+        hideFake();
+
         key->pick();
 
         return true;
@@ -1666,6 +1695,7 @@ void StageComponent::makeStage7() {
 
     sofaCushionLeft->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         sofaCushionLeft->locate(roomRightScene, 300, 70);
+        showFake();
         puangFail->show();
         puangFailMoving->start();
         return true;
@@ -1689,6 +1719,7 @@ void StageComponent::makeStage7() {
     facedGameOver->setOnTimerCallback([&](TimerPtr timer)->bool {
         timer->stop();
         
+        hideFake();
         //root->getStageSelectScene()->enter();
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
 
@@ -1826,6 +1857,7 @@ void StageComponent::makeStage8() {
     // 실패 조건 
     chicken->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         //chicken->hide();
+        showFake();
         puangFail->show();
 
         puangFailMoving->start();
@@ -1856,7 +1888,7 @@ void StageComponent::makeStage8() {
 
     facedGameOver->setOnTimerCallback([&](TimerPtr timer)->bool {
         timer->stop();
-        
+        hideFake();
         //root->getStageSelectScene()->enter();
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
 
@@ -1909,6 +1941,7 @@ void StageComponent::makeStage8() {
     dish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // 먹는 애니 추가 
         if (fish->isHanded()) {
+            showFake();
             fish->drop();
             fish->hide();
             // 그릇위에 생성 
@@ -1948,7 +1981,7 @@ void StageComponent::makeStage8() {
     eatingFish->setOnTimerCallback([&](TimerPtr timer)->bool {
         timer->stop();
         bigFish->setImage("Images/Stage/bigFishStand.png");
-        
+        hideFake();
         hamburgerCanClick = true;
 
 
@@ -1958,6 +1991,7 @@ void StageComponent::makeStage8() {
     bigFish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // 실패 조건2 
         if (fish->isHanded()) {
+            showFake();
             puangFail->show();
             puangFail->locate(roomLeftScene, 600, 150);
             puangFail->setImage("Images/Puang/푸앙_뒷_손.png");
@@ -2076,6 +2110,7 @@ void StageComponent::makeStage9() {
 
     burgerComingDown->setOnTimerCallback([&](TimerPtr timer)->bool {
         hamburger->show();
+        //showFake();
         timer->stop();
         if (burgerY > 150) {
             timer->set(0.5f);
@@ -2086,6 +2121,7 @@ void StageComponent::makeStage9() {
         }
         else {
             hamburgerCanClick = true;
+            hideFake();
             
         }
 
@@ -2101,8 +2137,8 @@ void StageComponent::makeStage9() {
             gymManTurn->show();
             
             batTemp->show(); 
-            bat1->drop();
-            bat1->hide();
+            //bat1->drop();
+            //bat1->hide();
 
             
         }
@@ -2133,7 +2169,7 @@ void StageComponent::makeStage9() {
             gymManTurn->hide();
             star2->show();
             gymManBang = Object::create("Images/Stage/trainerBang3.PNG", roomLeftScene, 100, 50);
-
+            batTemp->hide();
             gymManDead = true;
         }
         return true;
@@ -2188,7 +2224,10 @@ void StageComponent::makeStage9() {
 
     // 실패 
     bulga->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+
         if (bat1->isHanded() || bat2->isHanded()) {
+            showFake();
+
             // 불가사리치우는장면
             // 푸앙+빠따 접근
             // 푸앙+빠따 우로 + 불가사리 우로 
@@ -2207,6 +2246,7 @@ void StageComponent::makeStage9() {
         }
         // 실패 
         else {
+            showFake();
             puangFail->show();
             puangFailMoving->start();
         
@@ -2234,6 +2274,7 @@ void StageComponent::makeStage9() {
     facedGameOver->setOnTimerCallback([&](TimerPtr timer)->bool {
         timer->stop();
         
+        hideFake();
         //root->getStageSelectScene()->enter();
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
 
@@ -2304,6 +2345,7 @@ void StageComponent::makeStage9() {
         timer->stop();
         puangBatTemp->hide();
         puangBat->hide();
+        hideFake();
 
 
 
@@ -2433,7 +2475,7 @@ void StageComponent::makeStage9() {
                 }
 
 
-
+                showFake();
                 burgerComingDown->start();
             }
 
@@ -2501,7 +2543,7 @@ void StageComponent::makeStage9() {
                     star5->drop();
                     star5->hide();
                 }
-
+                showFake();
                 burgerComingDown->start();
             }
 
@@ -2568,7 +2610,7 @@ void StageComponent::makeStage9() {
                     star5->drop();
                     star5->hide();
                 }
-
+                showFake();
                 burgerComingDown->start();
             }
 
@@ -2634,7 +2676,7 @@ void StageComponent::makeStage9() {
                     star5->drop();
                     star5->hide();
                 }
-
+                showFake();
                 burgerComingDown->start();
             }
 
@@ -2700,7 +2742,7 @@ void StageComponent::makeStage9() {
                     star5->drop();
                     star5->hide();
                 }
-
+                showFake();
                 burgerComingDown->start();
             
             }
@@ -2744,6 +2786,7 @@ void StageComponent::makeStage10() {
     gameClearTimer = Timer::create(2.f);
     hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
 
+        showFake();
         puangEnding->show();
         puangGoing->start();
         return true;
@@ -2799,7 +2842,7 @@ void StageComponent::makeStage10() {
         // game clear
         // menu Btn ?
         // go next game ? 
-
+        hideFake();
         setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
         gameClearScene->enter();
         // 숫자 추가 
@@ -2832,7 +2875,7 @@ void StageComponent::resetObject() {
     windowLeft = NULL;
     windowRight = NULL;
     wallCloset =
-        sofa = NULL;
+    sofa = NULL;
     sofaCushionLeft = NULL;
     puangBitjaru = NULL;
     gymMan = NULL;
