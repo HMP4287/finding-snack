@@ -27,7 +27,7 @@ void StageSelectComponent::enter() {
     // MainMenu로 이동하는 버튼 초기화 
     root->setMainMenuBtn(Object::create("Images/Button/home.png", root->getStageSelectScene(), 1160, 610));
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!추후 수정해야함 (1로 수정할것)
-    root->setCurrentStage(1);
+    root->setCurrentStage(10);
     root->setClickedStage(0);
 
     

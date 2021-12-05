@@ -130,7 +130,7 @@ public:
 
 
     // 추후 인트로로 시작되게 변경해줘야함 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    void start() { startGame(introScene); };
+    void start() { startGame(stageSelectScene); };
     // 객체가 생성될때 변수 초기화 및 초기 셋팅등 생성자 역할을 하게 된다.
     void enter() {};
 

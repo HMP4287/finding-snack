@@ -867,7 +867,7 @@ void StageComponent::makeStage3() {
         return true;
     });
     puangFallDownAfter->setOnTimerCallback([&](TimerPtr timer)->bool {
-        hideFake();
+
         timer->stop();
         facedGameOver->start();
 
@@ -1443,6 +1443,9 @@ void StageComponent::makeStage6() {
                 key->setImage("Images/Stage/key.png");
             }
             keyStatus++;
+            if (keyStatus == 1000) {
+                keyStatus = 0;
+            }
             
 
             timer->start();
@@ -1470,7 +1473,9 @@ void StageComponent::makeStage6() {
                 gymMan->setImage("Images/Trainer/trainer1.png");
             }
             gymStatus++;
-            
+            if (gymStatus == 1000) {
+                gymStatus = 0;
+            }
 
             timer->start();
         }
@@ -1480,7 +1485,9 @@ void StageComponent::makeStage6() {
         return true;
     });
     gymMan->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        showFake();
         gymManSpin = false;
+        
         keySpin = false;
         //showFake();
         puangFail->show();
@@ -1828,6 +1835,7 @@ void StageComponent::makeStage8() {
     puangWeightCnt = 0;
     puangFail = Object::create("Images/Puang/Çª¾Ó_µÞ¸ð½À.png", roomLeftScene, 100, 50);
     puangFail->hide();
+    fishDead = false; 
     refrigeratorUp->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         refrigeratorUp->setImage("Images/Stage/rUO.png");
         return true;
@@ -1851,13 +1859,20 @@ void StageComponent::makeStage8() {
     });
 
     fish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
+        //if (fishDead)
+        //    return true; 
+
         fish->pick();
+        //fishDead = true; 
+        
         return true;
     });
 
     // ½ÇÆÐ Á¶°Ç 
     chicken->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         //chicken->hide();
+        if (fishDead)
+            return true;
         showFake();
         puangFail->show();
 
@@ -1941,10 +1956,16 @@ void StageComponent::makeStage8() {
 
     dish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // ¸Ô´Â ¾Ö´Ï Ãß°¡ 
+
+
         if (fish->isHanded()) {
             showFake();
+            fishDead = true;
             fish->drop();
             fish->hide();
+            fish->locate(roomLeftScene, 1280, 720);
+            //fishDead = true;
+            //fish = NULL;
             // ±×¸©À§¿¡ »ý¼º 
             // »õ Á¢±Ù // ¹ö°Å»ý±è 
             // »õ ¸ÔÀ½ 
@@ -1991,6 +2012,8 @@ void StageComponent::makeStage8() {
 
     bigFish->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         // ½ÇÆÐ Á¶°Ç2 
+        if (fishDead)
+            return true;
         if (fish->isHanded()) {
             showFake();
             puangFail->show();
@@ -2009,6 +2032,7 @@ void StageComponent::makeStage8() {
         //stage ++ 
         // game clear
         // menu Btn ?
+        resetBag();
         // go next game ? 
         if (hamburgerCanClick) {
             setGameOption(GameOption::GAME_OPTION_INVENTORY_BUTTON, false);
