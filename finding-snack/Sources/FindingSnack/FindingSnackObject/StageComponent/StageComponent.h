@@ -131,6 +131,7 @@ public:
     ObjectPtr flyLeft;
     int comeBigFishX;
     TimerPtr givingFish;
+    bool fishDead;
     TimerPtr comeBigFish;
     TimerPtr eatingFish;
     bool hamburgerCanClick;
