@@ -155,6 +155,9 @@ public:
     ObjectPtr gymManBang;
     int gymManTurnStatus;
     int gymManTurnCnt;
+    bool starCreateOnce;
+    bool bulgaCreateOnce;
+    bool bulgaClickAble;
 
     ObjectPtr star1; //window
     ObjectPtr star2; //bingle

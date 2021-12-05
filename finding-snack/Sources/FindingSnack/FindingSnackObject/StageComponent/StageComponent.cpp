@@ -460,7 +460,7 @@ void StageComponent::makeStage2() {
     });
     hamburger->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
         if (canBurger) {
-            canTrainer = false; 
+       
 
             if (burgerMoved) {
                 resetBag();
@@ -472,6 +472,7 @@ void StageComponent::makeStage2() {
 
             }
             else if (bitjaru->isHanded()) {
+                canTrainer = false;
                 showFake();
                 bitjaru->drop();
                 bitjaru->hide();
@@ -1777,7 +1778,7 @@ void StageComponent::makeStage9() {
     star4 = Object::create("Images/Stage/fullStar.png", roomLeftScene, 210, 630);
     star4->hide();
 
-
+    starCreateOnce = true;
     star5 = Object::create("Images/Stage/fullStar.png", roomRightScene, 600, 150);
     star5->hide();
 
@@ -1814,6 +1815,8 @@ void StageComponent::makeStage9() {
     star2 = Object::create("Images/Stage/starcircle.PNG", roomLeftScene, 150, 10);
     star2->hide();
     sofaCushionOnce = false;
+    bulgaCreateOnce = true;
+    bulgaClickAble = true;
     burgerComingDown->setOnTimerCallback([&](TimerPtr timer)->bool {
         hamburger->show();
         timer->stop();
@@ -1928,19 +1931,42 @@ void StageComponent::makeStage9() {
 
     bulga->setOnMouseCallback([&](auto obj, auto x, auto y, auto action)->bool {
 
-        if (bat1->isHanded() || bat2->isHanded()) {
-            showFake();
-            puangBat = Object::create("Images/Puang/Çª¾Ó_µÞ_¼Õ.png", roomRightScene, 400, 50);
-            puangBatTemp = Object::create("Images/Stage/bat.png", roomRightScene, 500, 150);
-            puangBatHit->start();
+        if (!bulgaClickAble) 
+            return true;
+
+        if (bulgaCreateOnce) {
+            if (bat1->isHanded() || bat2->isHanded()) {
+                showFake();
+                puangBat = Object::create("Images/Puang/Çª¾Ó_µÞ_¼Õ.png", roomRightScene, 400, 50);
+                puangBatTemp = Object::create("Images/Stage/bat.png", roomRightScene, 500, 150);
+                puangBatHit->start();
+                bulgaCreateOnce = false;
+                bulgaClickAble = false;
+
+            }
+
+            else {
+                showFake();
+                puangFail->show();
+                puangFailMoving->start();
+            }
 
         }
         else {
-            showFake();
-            puangFail->show();
-            puangFailMoving->start();
-        
+            if (bat1->isHanded() || bat2->isHanded()) {
+            }
+            else {
+                showFake();
+                puangFail->show();
+                puangFailMoving->start();
+            }
         }
+
+
+
+
+
+
         return true;
     });
 
@@ -2028,6 +2054,7 @@ void StageComponent::makeStage9() {
         puangBat->hide();
         hideFake();
 
+        bulgaClickAble = true;
 
 
 
@@ -2065,8 +2092,12 @@ void StageComponent::makeStage9() {
             windowStatus = 1;
         }
         else if (windowStatus == 1) {
-            windowRight->setImage("Images/Stage/nightWindow.png");
-            star1->show();
+            if (starCreateOnce) {
+                windowRight->setImage("Images/Stage/nightWindow.png");
+                star1->show();
+                starCreateOnce = false;
+            }
+
         }
         return true;
     });
